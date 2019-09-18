@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "Application.h"
 #include "Globals.h"
+#include "imgui/imgui.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -18,7 +19,7 @@ enum main_states
 int main(int argc, char ** argv)
 {
 	LOG("Starting game '%s'...", TITLE);
-
+/*
 	int main_return = EXIT_FAILURE;
 	main_states state = MAIN_CREATION;
 	Application* App = NULL;
@@ -82,7 +83,12 @@ int main(int argc, char ** argv)
 		}
 	}
 
-	delete App;
+	delete App;*/
+
+
+	//ImGui::ShowDemoWindow(); 
+
+
 	LOG("Exiting game '%s'...\n", TITLE);
-	return main_return;
+	return /*main_return*/true;
 }
