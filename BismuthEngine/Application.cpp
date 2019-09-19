@@ -1,14 +1,16 @@
 #include "Application.h"
+#include "gl3w.h"
 
 Application::Application()
 {
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
 	audio = new ModuleAudio(this, true);
-	scene_intro = new ModuleSceneIntro(this);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	physics = new ModulePhysics3D(this);
+	scene = new ModuleScene(this);
+	gui = new ModuleGui(this);
 
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
@@ -21,22 +23,21 @@ Application::Application()
 	AddModule(audio);
 	AddModule(physics);
 	
+	AddModule(gui);
+	
 	// Scenes
-	AddModule(scene_intro);
-
+	AddModule(scene);
 	// Renderer last!
 	AddModule(renderer3D);
 }
 
 Application::~Application()
 {
-	p2List_item<Module*>* item = list_modules.getLast();
+	std::list<Module*>::iterator item = modules.begin();
+	for (; item != modules.end(); item = next(item))
+		delete(*item);
 
-	while(item != NULL)
-	{
-		delete item->data;
-		item = item->prev;
-	}
+	modules.clear();
 }
 
 bool Application::Init()
@@ -44,23 +45,24 @@ bool Application::Init()
 	bool ret = true;
 
 	// Call Init() in all modules
-	p2List_item<Module*>* item = list_modules.getFirst();
+	std::list<Module*>::iterator item = modules.begin();
+	gl3wInit();
 
-	while(item != NULL && ret == true)
+	while(item != modules.end() && ret == true)
 	{
-		ret = item->data->Init();
-		item = item->next;
+		ret = (*item)->Init();
+		item = next(item);
 	}
 
 	// After all Init calls we call Start() in all modules
 	LOG("Application Start --------------");
-	item = list_modules.getFirst();
+	item = modules.begin();
 
-	while(item != NULL && ret == true)
+	while(item != modules.end() && ret == true)
 	{
-		ret = item->data->Start();
-		item = item->next;
-	}
+		ret = (*item)->Start();
+		item = next(item);
+	} 
 	
 	ms_timer.Start();
 	return ret;
@@ -84,28 +86,28 @@ update_status Application::Update()
 	update_status ret = UPDATE_CONTINUE;
 	PrepareUpdate();
 	
-	p2List_item<Module*>* item = list_modules.getFirst();
-	
-	while(item != NULL && ret == UPDATE_CONTINUE)
+	std::list<Module*>::iterator item = modules.begin();
+
+	while(item != modules.end() && ret == UPDATE_CONTINUE)
 	{
-		ret = item->data->PreUpdate(dt);
-		item = item->next;
+		ret = (*item)->PreUpdate(dt);
+		item = next(item);
 	}
 
-	item = list_modules.getFirst();
+	item = modules.begin();
 
-	while(item != NULL && ret == UPDATE_CONTINUE)
+	while (item != modules.end() && ret == UPDATE_CONTINUE)
 	{
-		ret = item->data->Update(dt);
-		item = item->next;
+		ret = (*item)->Update(dt);
+		item = next(item);
 	}
 
-	item = list_modules.getFirst();
+	item = modules.begin();
 
-	while(item != NULL && ret == UPDATE_CONTINUE)
+	while (item != modules.end() && ret == UPDATE_CONTINUE)
 	{
-		ret = item->data->PostUpdate(dt);
-		item = item->next;
+		ret = (*item)->PostUpdate(dt);
+		item = next(item);
 	}
 
 	FinishUpdate();
@@ -115,17 +117,18 @@ update_status Application::Update()
 bool Application::CleanUp()
 {
 	bool ret = true;
-	p2List_item<Module*>* item = list_modules.getLast();
+	std::list<Module*>::iterator item = modules.begin();
 
-	while(item != NULL && ret == true)
+
+	while(item != modules.end() && ret == true)
 	{
-		ret = item->data->CleanUp();
-		item = item->prev;
+		ret = (*item)->CleanUp();
+		item = next(item);
 	}
 	return ret;
 }
 
 void Application::AddModule(Module* mod)
 {
-	list_modules.add(mod);
+	modules.push_back(mod);
 }

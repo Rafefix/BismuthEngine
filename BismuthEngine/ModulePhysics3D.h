@@ -1,22 +1,21 @@
 #pragma once
 #include "Module.h"
 #include "Globals.h"
-#include "p2List.h"
 #include "Primitive.h"
+
+#include <vector>
 
 #include "Bullet/include/btBulletDynamicsCommon.h"
 
 // Recommended scale is 1.0f == 1 meter, no less than 0.2 objects
-#define GRAVITY btVector3(0.0f, -10.0f, 0.0f) 
+#define GRAVITY btVector3(0.0f, -10.0f, 0.0f)
 
 class DebugDrawer;
 struct PhysBody3D;
-struct PhysVehicle3D;
-struct VehicleInfo;
 
 enum SENSOR {
 	NONE,
-	WIN, 
+	WIN,
 	CHECKPOINT1,
 	CHECKPOINT2,
 	CHECKPOINT3,
@@ -39,7 +38,6 @@ public:
 	PhysBody3D* AddBody(const Sphere& sphere, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cube& cube, float mass = 1.0f);
 	PhysBody3D* AddBody(const Cylinder& cylinder, float mass = 1.0f, SENSOR sensorType = NONE);
-	PhysVehicle3D* AddVehicle(const VehicleInfo& info);
 
 	void AddConstraintP2P(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB);
 	void AddConstraintHinge(PhysBody3D& bodyA, PhysBody3D& bodyB, const vec3& anchorA, const vec3& anchorB, const vec3& axisS, const vec3& axisB, bool disable_collision = false);
@@ -54,11 +52,10 @@ private:
 	btDefaultVehicleRaycaster*			vehicle_raycaster;
 	DebugDrawer*						debug_draw;
 
-	p2List<btCollisionShape*> shapes;
-	p2List<PhysBody3D*> bodies;
-	p2List<btDefaultMotionState*> motions;
-	p2List<btTypedConstraint*> constraints;
-	p2List<PhysVehicle3D*> vehicles;
+	std::vector<btCollisionShape*> shapes;
+	std::vector<PhysBody3D*> bodies;
+	std::vector<btDefaultMotionState*> motions;
+	std::vector<btTypedConstraint*> constraints;
 
 public:
 
