@@ -31,6 +31,9 @@
     <Filter Include="Sources\Modules\GuiModules">
       <UniqueIdentifier>{d66d1534-d793-4f15-9aac-2e53e9d1e492}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Glew">
+      <UniqueIdentifier>{1adc947d-eca9-463c-8745-deaac03bc6f5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -123,6 +126,12 @@
     <ClInclude Include="ModuleGui.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
+    <ClInclude Include="WindowOrder.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
+    <ClInclude Include="glew\include\GL\glew.h">
+      <Filter>Sources\Glew</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -196,6 +205,12 @@
     </ClCompile>
     <ClCompile Include="ModuleGui.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowOrder.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="glew\src\glew.c">
+      <Filter>Sources\Glew</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

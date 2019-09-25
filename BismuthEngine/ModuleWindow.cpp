@@ -88,6 +88,12 @@ bool ModuleWindow::CleanUp()
 	return true;
 }
 
+
+void ModuleWindow::GetSize(int & width, int & height)
+{
+	SDL_GetWindowSize(window, &width, &height);
+}
+
 void ModuleWindow::SetTitle(const char* title)
 {
 	SDL_SetWindowTitle(window, title);
