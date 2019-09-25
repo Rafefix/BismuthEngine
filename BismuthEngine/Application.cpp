@@ -1,5 +1,4 @@
 #include "Application.h"
-#include "gl3w.h"
 
 Application::Application()
 {
@@ -23,10 +22,12 @@ Application::Application()
 	AddModule(audio);
 	AddModule(physics);
 	
-	AddModule(gui);
 	
 	// Scenes
 	AddModule(scene);
+
+	AddModule(gui);
+
 	// Renderer last!
 	AddModule(renderer3D);
 }
@@ -46,7 +47,6 @@ bool Application::Init()
 
 	// Call Init() in all modules
 	std::list<Module*>::iterator item = modules.begin();
-	gl3wInit();
 
 	while(item != modules.end() && ret == true)
 	{

@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleRenderer3D.h"
 #include "SDL\include\SDL_opengl.h"
+
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
@@ -32,6 +33,8 @@ bool ModuleRenderer3D::Init()
 	
 	if(ret == true)
 	{
+		glewInit();
+
 		//Use Vsync
 		if(VSYNC && SDL_GL_SetSwapInterval(1) < 0)
 			LOG("Warning: Unable to set VSync! SDL Error: %s\n", SDL_GetError());

@@ -10,7 +10,7 @@
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
-#include "gl3w.h"
+#include "glew/include/GL/glew.h"
 
 #include "ModuleRenderer3D.h"
 
