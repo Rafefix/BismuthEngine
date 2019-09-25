@@ -25,6 +25,12 @@
     <Filter Include="Sources\Tools\ImGui\SDL_OpenGL3">
       <UniqueIdentifier>{89de8cfe-9e09-4b1a-b363-3b116c8302b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Math">
+      <UniqueIdentifier>{38a1d833-ca5a-4532-939a-e98875866122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Modules\GuiModules">
+      <UniqueIdentifier>{d66d1534-d793-4f15-9aac-2e53e9d1e492}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -90,9 +96,6 @@
     <ClInclude Include="Globals.h">
       <Filter>Sources\Core</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleGui.h">
-      <Filter>Sources\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="imgui_impl_sdl.h">
       <Filter>Sources\Tools\ImGui\SDL_OpenGL3</Filter>
     </ClInclude>
@@ -107,6 +110,18 @@
     </ClInclude>
     <ClInclude Include="ModuleScene.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\include\MathBuildConfig.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\include\MathGeoLib.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="MathGeoLib\include\MathGeoLibFwd.h">
+      <Filter>Sources\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleGui.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +182,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Sources\Core</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleGui.cpp">
-      <Filter>Sources\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="imgui_impl_sdl.cpp">
       <Filter>Sources\Tools\ImGui\SDL_OpenGL3</Filter>
     </ClCompile>
@@ -181,6 +193,9 @@
     </ClCompile>
     <ClCompile Include="ModuleScene.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGui.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

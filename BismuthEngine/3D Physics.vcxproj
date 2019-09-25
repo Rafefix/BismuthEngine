@@ -89,6 +89,9 @@
     <ClInclude Include="imstb_textedit.h" />
     <ClInclude Include="imstb_truetype.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="MathGeoLib\include\MathBuildConfig.h" />
+    <ClInclude Include="MathGeoLib\include\MathGeoLib.h" />
+    <ClInclude Include="MathGeoLib\include\MathGeoLibFwd.h" />
     <ClInclude Include="ModuleCamera3D.h" />
     <ClInclude Include="ModuleGui.h" />
     <ClInclude Include="ModulePhysics3D.h" />
