@@ -18,6 +18,7 @@ struct SDL_Color;
 
 class WindowOrder;
 class GuiConfig;
+class GuiAbout;
 
 class  GuiElement
 {
@@ -65,6 +66,7 @@ private:
 
 	WindowOrder* windoworder = nullptr;
 	GuiConfig* config = nullptr;
+	GuiAbout* about = nullptr;
 };
 
 #endif  __ModuleGui_H__

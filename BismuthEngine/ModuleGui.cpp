@@ -5,6 +5,7 @@
 #include "ModuleAudio.h"
 #include "ModuleWindow.h"
 #include "GuiConfig.h"
+#include "GuiAbout.h"
 #include "WindowOrder.h"
 #include <stdio.h>
 
@@ -30,9 +31,11 @@ bool ModuleGui::Init()
 	LOG("Loading GUI atlas");
 	windoworder = new WindowOrder();
 	config = new GuiConfig();
+	about = new GuiAbout();
 
 	AddGuiElement(windoworder);
 	AddGuiElement(config);
+	AddGuiElement(about);
 
 	return true;
 }

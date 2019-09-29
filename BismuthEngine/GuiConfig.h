@@ -2,6 +2,7 @@
 #define __GUICONFIG__H__
 
 #include "ModuleGui.h"
+#include <string>
 
 class GuiConfig : public GuiElement
 {
@@ -23,9 +24,14 @@ private:
 	float	brightness = 1.0f;
 
 	bool	fullscreen = false;
-	bool	resizable = false;
+	bool	resizable = true;
 	bool	borderless = false;
 	bool	fulldesktop = false;
+
+	std::string	caps;
+	std::string	cpus;
+	std::string	ram;
+	std::string	gpu;
 };
 
 #endif __GUICONFIG__H__

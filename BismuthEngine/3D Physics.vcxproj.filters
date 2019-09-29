@@ -132,6 +132,9 @@
     <ClInclude Include="GuiConfig.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
+    <ClInclude Include="GuiAbout.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -210,6 +213,9 @@
       <Filter>Sources\Glew</Filter>
     </ClCompile>
     <ClCompile Include="GuiConfig.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiAbout.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>
