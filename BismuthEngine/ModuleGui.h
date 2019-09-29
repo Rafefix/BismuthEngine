@@ -23,13 +23,17 @@ class GuiAbout;
 class  GuiElement
 {
 public:
-	GuiElement() {};
+	GuiElement(bool is_visible) {
+		visible = is_visible;
+	};
 	virtual ~GuiElement() {};
 
 	virtual void Start() {};
 	virtual void Draw() {};
 	virtual void CleanUp() {};
 
+
+	bool visible = false;
 };
 
 // ---------------------------------------------------

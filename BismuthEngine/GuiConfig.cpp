@@ -4,12 +4,12 @@
 #include "imgui.h"
 #include "glew/include/GL/glew.h"
 
-GuiConfig::GuiConfig() {}
+GuiConfig::GuiConfig(bool is_visible) : GuiElement(is_visible) {}
 
 GuiConfig::~GuiConfig() {}
 
 void GuiConfig::Start(){
-/*
+
 	if (SDL_Has3DNow())
 		caps += "3DNow, ";
 	if (SDL_HasAltiVec())
@@ -31,7 +31,7 @@ void GuiConfig::Start(){
 	if (SDL_HasSSE41())
 		caps += "SSE41, ";
 	if (SDL_HasSSE42())
-		caps += "SSE42";*/
+		caps += "SSE42";
 
 }
 
@@ -40,7 +40,13 @@ void GuiConfig::Draw(){
 	ImGui::SetNextWindowPos(ImVec2(200, 18), ImGuiCond_Once);
 	ImGui::SetNextWindowSize(ImVec2((float)window_width / 5, (float)window_height - 18), ImGuiCond_Once);
 
-	if (ImGui::Begin("Configuration"), NULL, ImGuiWindowFlags_NoCollapse){
+	if (!visible) {
+		return;
+	}
+		
+
+	if (ImGui::Begin("Configuration", &visible, ImGuiWindowFlags_AlwaysAutoResize))
+	{
 
 		ImGui::SliderInt("Width", &width, 1, 1920);
 		ImGui::SliderInt("Height", &height, 1, 1080);

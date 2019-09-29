@@ -7,7 +7,7 @@ class WindowOrder : public GuiElement
 {
 public:
 
-	WindowOrder();
+	WindowOrder(bool is_visible = true);;
 	virtual ~WindowOrder();
 
 public:

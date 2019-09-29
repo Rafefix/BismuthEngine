@@ -7,7 +7,7 @@ class GuiAbout : public GuiElement
 {
 public:
 
-	GuiAbout();
+	GuiAbout(bool is_visible = true);
 	virtual ~GuiAbout();
 
 public:

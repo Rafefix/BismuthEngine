@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 
-GuiAbout::GuiAbout() {}
+GuiAbout::GuiAbout(bool is_visible) : GuiElement(is_visible) {}
 
 GuiAbout::~GuiAbout() {}
 
@@ -12,8 +12,13 @@ void GuiAbout::Start()
 
 void GuiAbout::Draw()
 {
-	if (ImGui::Begin("About"), NULL, ImGuiWindowFlags_AlwaysAutoResize)
-	{
+	if (!visible) {
+		return;
+	}
+	ImGui::SetNextWindowPos(ImVec2(450, 18), ImGuiCond_Once);
+
+	if (ImGui::Begin("About", &visible, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse)){
+
 		ImGui::Text("%s ", SDL_GetWindowTitle(App->window->window));
 		ImGui::Separator();
 

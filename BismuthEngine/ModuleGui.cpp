@@ -29,9 +29,9 @@ ModuleGui::~ModuleGui()
 bool ModuleGui::Init()
 {
 	LOG("Loading GUI atlas");
-	windoworder = new WindowOrder();
-	config = new GuiConfig();
-	about = new GuiAbout();
+	windoworder = new WindowOrder(true);
+	config = new GuiConfig(false);
+	about = new GuiAbout(false);
 
 	AddGuiElement(windoworder);
 	AddGuiElement(config);
@@ -141,7 +141,7 @@ update_status ModuleGui::Update(float dt)
 				ShellExecuteA(NULL, "open", "https://github.com/Rafefix/BismuthEngine/issues", NULL, NULL, SW_SHOWNORMAL);
 			}
 				
-			if (ImGui::MenuItem("About")) {}
+			ImGui::MenuItem("About", NULL, &about->visible);
 
 			ImGui::EndMenu();
 		}
@@ -159,6 +159,7 @@ update_status ModuleGui::Update(float dt)
 	}
 		
 	if (show_config) {
+		config->visible = true;
 		//CHECK LATER
 	}
 

@@ -8,7 +8,7 @@ class GuiConfig : public GuiElement
 {
 public:
 
-	GuiConfig();
+	GuiConfig(bool is_visible = true);
 	virtual ~GuiConfig();
 
 public:

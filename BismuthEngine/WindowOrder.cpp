@@ -3,7 +3,7 @@
 #include "ModuleWindow.h"
 #include "imgui.h"
 
-WindowOrder::WindowOrder() {}
+WindowOrder::WindowOrder(bool is_visible) : GuiElement(is_visible) {}
 
 WindowOrder::~WindowOrder() {}
 
