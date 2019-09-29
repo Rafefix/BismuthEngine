@@ -4,6 +4,7 @@
 #include "ModuleGui.h"
 #include "ModuleAudio.h"
 #include "ModuleWindow.h"
+#include "GuiConfig.h"
 #include "WindowOrder.h"
 #include <stdio.h>
 
@@ -28,8 +29,10 @@ bool ModuleGui::Init()
 {
 	LOG("Loading GUI atlas");
 	windoworder = new WindowOrder();
+	config = new GuiConfig();
 
 	AddGuiElement(windoworder);
+	AddGuiElement(config);
 
 	return true;
 }
@@ -90,16 +93,20 @@ update_status ModuleGui::Update(float dt)
 	{
 		if (ImGui::BeginMenu("File"))
 		{
-			if (ImGui::MenuItem("Quit", "Alt+F4"))
+			if (ImGui::MenuItem("Quit", "Alt+F4")) {
 				ret = UPDATE_STOP;
+			}
+				
 
 			ImGui::EndMenu();
 		}
 
 		if (ImGui::BeginMenu("Edit"))
 		{
-			if (ImGui::MenuItem("Style Editor"))
+			if (ImGui::MenuItem("Style Editor")) {
 				show_style_editor = true;
+			}
+				
 
 			ImGui::EndMenu();
 		}
@@ -109,10 +116,29 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("Demo"))
+		if (ImGui::BeginMenu("Help"))
 		{
-			if (ImGui::MenuItem("Show Demo"))
+			if (ImGui::MenuItem("Configuration")) {
+				show_config = true;
+			}
+			
+			if (ImGui::MenuItem("Show Demo")) {
 				show_demo_window = true;
+			}
+			
+			if (ImGui::MenuItem("Documentation")) {
+				ShellExecuteA(NULL, "open", "https://github.com/Rafefix/BismuthEngine", NULL, NULL, SW_SHOWNORMAL);
+			}
+				
+			if (ImGui::MenuItem("Download latest")){
+				ShellExecuteA(NULL, "open", "https://github.com/Rafefix/BismuthEngine/releases", NULL, NULL, SW_SHOWNORMAL);
+			}
+				
+			if (ImGui::MenuItem("Report a bug")){
+				ShellExecuteA(NULL, "open", "https://github.com/Rafefix/BismuthEngine/issues", NULL, NULL, SW_SHOWNORMAL);
+			}
+				
+			if (ImGui::MenuItem("About")) {}
 
 			ImGui::EndMenu();
 		}
@@ -120,11 +146,18 @@ update_status ModuleGui::Update(float dt)
 		ImGui::EndMainMenuBar();
 	}
 
-	if (show_demo_window)
+	if (show_demo_window) {
 		ImGui::ShowDemoWindow(&show_demo_window);
+	}
+	
 
-	if (show_style_editor)
+	if (show_style_editor) {
 		StyleEditor();
+	}
+		
+	if (show_config) {
+		//CHECK LATER
+	}
 
 	ImGuiIO& test_io = *io;
 	// Rendering

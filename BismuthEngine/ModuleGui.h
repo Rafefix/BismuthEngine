@@ -17,6 +17,7 @@ struct SDL_Rect;
 struct SDL_Color; 
 
 class WindowOrder;
+class GuiConfig;
 
 class  GuiElement
 {
@@ -58,10 +59,12 @@ private:
 
 	bool show_demo_window = false;
 	bool show_style_editor = false;
+	bool show_config = false;
 
 	class std::list<GuiElement*> gui_elements;
 
-	WindowOrder*		windoworder = nullptr;
+	WindowOrder* windoworder = nullptr;
+	GuiConfig* config = nullptr;
 };
 
 #endif  __ModuleGui_H__
