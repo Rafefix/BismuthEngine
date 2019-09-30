@@ -16,6 +16,8 @@ public:
 
 	Uint32 Read();
 
+	float GetSec() const;
+
 private:
 
 	bool	running;

@@ -4,8 +4,12 @@
 #include "ModuleGui.h"
 #include <string>
 
-class GuiConfig : public GuiElement
-{
+#include <vector>
+
+#define HISTOGRAM_BARS 50
+
+class GuiConfig : public GuiElement{
+
 public:
 
 	GuiConfig(bool is_visible = true);
@@ -15,6 +19,9 @@ public:
 	void Start();
 	void Draw();
 	void CleanUp();
+
+	void GetFps(float fps);
+	void GetMs(float ms);
 
 private:
 	int		window_width = 0;
@@ -27,6 +34,9 @@ private:
 	bool	resizable = true;
 	bool	borderless = false;
 	bool	fulldesktop = false;
+
+	std::vector<float> fps_vec;
+	std::vector<float> ms_vec;
 
 	std::string	caps;
 	std::string	cpus;

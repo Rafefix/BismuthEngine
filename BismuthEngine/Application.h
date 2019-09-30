@@ -29,8 +29,18 @@ public:
 
 private:
 
-	Timer	ms_timer;
+	uint					frame_count = 0;
+	uint					last_sec_frame_count = 0;
+	uint					prev_last_sec_frame_count = 0;
+	uint					framerate_cap = 0;
+	uint					maxFPS = 60;
+
+	Timer					startup_time;
+	Timer					frame_time;
+	Timer					last_sec_frame_time;
+
 	float	dt;
+
 	std::list<Module*> modules;
 
 public:
@@ -41,6 +51,8 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
+	uint GetMaxFps() const;
+	void SetMaxFps(uint max_framerate);
 
 private:
 

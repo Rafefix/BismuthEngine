@@ -6,8 +6,9 @@
 #include "ModuleWindow.h"
 #include "GuiConfig.h"
 #include "GuiAbout.h"
-#include "WindowOrder.h"
+#include "WindowBase.h"
 #include <stdio.h>
+
 
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
@@ -29,11 +30,11 @@ ModuleGui::~ModuleGui()
 bool ModuleGui::Init()
 {
 	LOG("Loading GUI atlas");
-	windoworder = new WindowOrder(true);
+	windowbase = new WindowBase(true);
 	config = new GuiConfig(false);
 	about = new GuiAbout(false);
 
-	AddGuiElement(windoworder);
+	AddGuiElement(windowbase);
 	AddGuiElement(config);
 	AddGuiElement(about);
 
@@ -331,6 +332,18 @@ void ModuleGui::HelpMarker(const char * desc)
 	}
 }
 
+void ModuleGui::ShowFps(float fps)
+{
+	if (config != nullptr)
+		config->GetFps(fps);
+}
+
+void ModuleGui::ShowMs(float ms)
+{
+	if (config != nullptr)
+		config->GetMs(ms);
+}
+
 // Called before quitting
 bool ModuleGui::CleanUp()
 {
@@ -344,3 +357,4 @@ bool ModuleGui::CleanUp()
 
 	return true;
 }
+

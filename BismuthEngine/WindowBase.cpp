@@ -1,17 +1,17 @@
-#include "WindowOrder.h"
+#include "WindowBase.h"
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "imgui.h"
 
-WindowOrder::WindowOrder(bool is_visible) : GuiElement(is_visible) {}
+WindowBase::WindowBase(bool is_visible) : GuiElement(is_visible) {}
 
-WindowOrder::~WindowOrder() {}
+WindowBase::~WindowBase() {}
 
-void WindowOrder::Start()
+void WindowBase::Start()
 {
 }
 
-void WindowOrder::Draw()
+void WindowBase::Draw()
 {
 	App->window->GetSize(window_width, window_height);
 	ImGui::SetNextWindowPos(ImVec2(0, 18), ImGuiCond_Once);
@@ -24,6 +24,6 @@ void WindowOrder::Draw()
 	}
 }
 
-void WindowOrder::CleanUp()
+void WindowBase::CleanUp()
 {
 }

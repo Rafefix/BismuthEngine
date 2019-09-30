@@ -123,9 +123,6 @@
     <ClInclude Include="ModuleGui.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
-    <ClInclude Include="WindowOrder.h">
-      <Filter>Sources\Modules\GuiModules</Filter>
-    </ClInclude>
     <ClInclude Include="glew\include\GL\glew.h">
       <Filter>Sources\Glew</Filter>
     </ClInclude>
@@ -133,6 +130,9 @@
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
     <ClInclude Include="GuiAbout.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowBase.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
   </ItemGroup>
@@ -206,9 +206,6 @@
     <ClCompile Include="ModuleGui.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
-    <ClCompile Include="WindowOrder.cpp">
-      <Filter>Sources\Modules\GuiModules</Filter>
-    </ClCompile>
     <ClCompile Include="glew\src\glew.c">
       <Filter>Sources\Glew</Filter>
     </ClCompile>
@@ -216,6 +213,9 @@
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
     <ClCompile Include="GuiAbout.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowBase.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>

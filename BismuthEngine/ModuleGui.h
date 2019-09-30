@@ -16,7 +16,7 @@ struct _TTF_Font;
 struct SDL_Rect;
 struct SDL_Color; 
 
-class WindowOrder;
+class WindowBase;
 class GuiConfig;
 class GuiAbout;
 
@@ -52,12 +52,14 @@ public:
 
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
-
+	void ShowFps(float fps);
+	void ShowMs(float ms);
 private:
 
 	void AddGuiElement(GuiElement* element);
 	void StyleEditor(ImGuiStyle* ref = NULL);
 	void HelpMarker(const char* desc);
+
 
 private:
 	ImGuiIO* io;
@@ -68,7 +70,7 @@ private:
 
 	class std::list<GuiElement*> gui_elements;
 
-	WindowOrder* windoworder = nullptr;
+	WindowBase* windowbase = nullptr;
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
 };
