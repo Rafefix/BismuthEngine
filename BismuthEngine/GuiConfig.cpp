@@ -48,6 +48,8 @@ void GuiConfig::Draw(){
 	if (ImGui::Begin("Configuration", &visible, ImGuiWindowFlags_AlwaysAutoResize))
 	{
 
+		App->window->GetSize(width, height);
+
 		ImGui::SliderInt("Width", &width, 1, 1920);
 		ImGui::SliderInt("Height", &height, 1, 1080);
 		ImGui::SliderFloat("Brightness", &brightness, 0.0f, 1.0f);

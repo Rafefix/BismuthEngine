@@ -15,6 +15,7 @@ void GuiAbout::Draw()
 	if (!visible) {
 		return;
 	}
+
 	ImGui::SetNextWindowPos(ImVec2(450, 18), ImGuiCond_Once);
 
 	if (ImGui::Begin("About", &visible, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoCollapse)){
@@ -39,7 +40,7 @@ void GuiAbout::Draw()
 		//RANDOM NUMBER GENERATOR CHECK LATER
 
 		ImGui::Text("\nMIT License");
-		ImGui::Text("Copyright (c) 2019 Ferran Barnes Garica & Rafel Brau");
+		ImGui::Text("Copyright (c) 2019 Ferran Barnes Garica & Rafel Brau Ramia");
 		ImGui::Text("Permission is hereby granted, free of charge, to any person obtaining a copy");
 		ImGui::Text("of this software and associated documentation files (the 'Software'), to deal");
 		ImGui::Text("in the Software without restriction, including without limitation the rights");

@@ -121,9 +121,6 @@ update_status ModuleGui::Update(float dt)
 
 		if (ImGui::BeginMenu("Help"))
 		{
-			if (ImGui::MenuItem("Configuration")) {
-				show_config = true;
-			}
 			
 			if (ImGui::MenuItem("Show Demo")) {
 				show_demo_window = true;
@@ -146,6 +143,12 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
+		if (ImGui::BeginMenu("Configuration")) {
+			
+			show_config = true;
+			ImGui::EndMenu();
+		}
+
 		ImGui::EndMainMenuBar();
 	}
 
@@ -157,10 +160,12 @@ update_status ModuleGui::Update(float dt)
 	if (show_style_editor) {
 		StyleEditor();
 	}
-		
+	
+	
+	
 	if (show_config) {
 		config->visible = true;
-		//CHECK LATER
+		
 	}
 
 	ImGuiIO& test_io = *io;
