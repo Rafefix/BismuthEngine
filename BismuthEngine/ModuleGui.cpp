@@ -94,8 +94,8 @@ update_status ModuleGui::Update(float dt)
 	// Main Menu
 	if (ImGui::BeginMainMenuBar())
 	{
-		if (ImGui::BeginMenu("File"))
-		{
+		if (ImGui::BeginMenu("File")){
+
 			if (ImGui::MenuItem("Quit", "Alt+F4")) {
 				ret = UPDATE_STOP;
 			}
@@ -104,8 +104,8 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("Edit"))
-		{
+		if (ImGui::BeginMenu("Edit")){
+
 			if (ImGui::MenuItem("Style Editor")) {
 				show_style_editor = true;
 			}
@@ -114,13 +114,11 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("Window"))
-		{
+		if (ImGui::BeginMenu("Window")){
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("Help"))
-		{
+		if (ImGui::BeginMenu("Help")){
 			
 			if (ImGui::MenuItem("Show Demo")) {
 				show_demo_window = true;
@@ -145,7 +143,7 @@ update_status ModuleGui::Update(float dt)
 
 		if (ImGui::BeginMenu("Configuration")) {
 			
-			show_config = true;
+			config->visible = !config->visible;
 			ImGui::EndMenu();
 		}
 
