@@ -332,17 +332,6 @@ void ModuleGui::HelpMarker(const char * desc)
 	}
 }
 
-void ModuleGui::ShowFps(float fps)
-{
-	if (config != nullptr)
-		config->GetFps(fps);
-}
-
-void ModuleGui::ShowMs(float ms)
-{
-	if (config != nullptr)
-		config->GetMs(ms);
-}
 
 // Called before quitting
 bool ModuleGui::CleanUp()

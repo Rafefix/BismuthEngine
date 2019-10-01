@@ -52,8 +52,7 @@ public:
 
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
-	void ShowFps(float fps);
-	void ShowMs(float ms);
+	
 private:
 
 	void AddGuiElement(GuiElement* element);

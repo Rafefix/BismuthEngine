@@ -3,10 +3,9 @@
 
 #include "ModuleGui.h"
 #include <string>
+#include "SDL/include/SDL.h"
+#include "glew/include/GL/glew.h"
 
-#include <vector>
-
-#define HISTOGRAM_BARS 50
 
 class GuiConfig : public GuiElement{
 
@@ -20,9 +19,6 @@ public:
 	void Draw();
 	void CleanUp();
 
-	void GetFps(float fps);
-	void GetMs(float ms);
-
 private:
 	int		window_width = 0;
 	int		window_height = 0;
@@ -35,8 +31,11 @@ private:
 	bool	borderless = false;
 	bool	fulldesktop = false;
 
-	std::vector<float> fps_vec;
-	std::vector<float> ms_vec;
+	GLint video_mem_budget = 0;
+	GLint video_mem_available = 0;
+	GLint video_mem_usage = 0;
+
+	SDL_version sdl_version;
 
 	std::string	caps;
 	std::string	cpus;

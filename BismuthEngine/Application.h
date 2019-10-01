@@ -15,6 +15,8 @@
 
 #include <list>
 
+#define HISTOGRAM_BARS 100
+
 class Application
 {
 public:
@@ -27,13 +29,17 @@ public:
 	ModuleScene* scene;
 	ModuleGui* gui;
 
+	std::vector<float> fps_vec;
+	std::vector<float> ms_vec;
+	int maxFps = 60;
+
 private:
 
-	uint					frame_count = 0;
-	uint					last_sec_frame_count = 0;
-	uint					prev_last_sec_frame_count = 0;
-	uint					framerate_cap = 0;
-	uint					maxFPS = 60;
+	uint frame_count = 0;
+	uint last_sec_frame_count = 0;
+	uint prev_last_sec_frame_count = 0;
+	uint framerate_cap = 0;
+	int	 capped_ms = -1;
 
 	Timer					startup_time;
 	Timer					frame_time;
@@ -51,8 +57,7 @@ public:
 	bool Init();
 	update_status Update();
 	bool CleanUp();
-	uint GetMaxFps() const;
-	void SetMaxFps(uint max_framerate);
+	
 
 private:
 
