@@ -61,7 +61,6 @@ private:
 
 
 private:
-	ImGuiIO* io;
 
 	bool show_demo_window = false;
 	bool show_style_editor = false;
@@ -72,6 +71,11 @@ private:
 	WindowBase* windowbase = nullptr;
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
+
+public:
+
+	ImGuiIO* io;
+	
 };
 
 #endif  __ModuleGui_H__

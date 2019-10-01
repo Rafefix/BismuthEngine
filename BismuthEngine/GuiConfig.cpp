@@ -63,6 +63,9 @@ void GuiConfig::Draw(){
 
 		if (ImGui::Checkbox("Full Screen", &fullscreen)){
 			App->window->SetFullScreen(fullscreen);
+		}else {
+			SDL_SetWindowSize(App->window->window, 1024, 768);
+
 		}
 			
 		
@@ -75,6 +78,53 @@ void GuiConfig::Draw(){
 			App->window->SetBorderless(borderless);
 		}
 		
+		if (ImGui::CollapsingHeader("Input")){
+
+			if (ImGui::IsMousePosValid()) {
+				
+				float x = App->gui->io->MousePos.x;
+				float y = App->gui->io->MousePos.y;
+
+				ImGui::Text("Mouse position: (%g, %g)",x , y);
+			
+			}else {
+				
+				ImGui::Text("Mouse pos: <INVALID>");
+				ImGui::Text("Mouse delta: (%g, %g)", App->gui->io->MouseDelta.x, App->gui->io->MouseDelta.y);
+
+				ImGui::Text("Mouse down:"); 
+
+				for (int i = 0; i < IM_ARRAYSIZE(App->gui->io->MouseDown); i++) {
+					if (App->gui->io->MouseDownDuration[i] >= 0.0f) {
+						ImGui::SameLine(); ImGui::Text("b%d (%.02f secs)", i, App->gui->io->MouseDownDuration[i]);
+					}
+				}
+
+				ImGui::Text("Mouse clicked:");  
+
+				for (int i = 0; i < IM_ARRAYSIZE(App->gui->io->MouseDown); i++) {
+					if (ImGui::IsMouseClicked(i)) { 
+						ImGui::SameLine(); ImGui::Text("b%d", i); }
+				}
+
+				ImGui::Text("Mouse dbl-clicked:"); 
+				for (int i = 0; i < IM_ARRAYSIZE(App->gui->io->MouseDown); i++) {
+					if (ImGui::IsMouseDoubleClicked(i)) { 
+						ImGui::SameLine(); ImGui::Text("b%d", i); }
+				}
+
+
+				ImGui::Text("Mouse released:"); 
+				for (int i = 0; i < IM_ARRAYSIZE(App->gui->io->MouseDown); i++) {
+					if (ImGui::IsMouseReleased(i)) { 
+						ImGui::SameLine(); ImGui::Text("b%d", i); }
+				}
+					
+			}
+				
+		}
+
+
 		if (ImGui::CollapsingHeader("Hardware")){
 			
 		
