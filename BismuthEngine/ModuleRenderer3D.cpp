@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleRenderer3D.h"
 #include "SDL\include\SDL_opengl.h"
+#include "ModuleGui.h"
+
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -91,12 +93,19 @@ bool ModuleRenderer3D::Init()
 
 		GLfloat MaterialDiffuse[] = {1.0f, 1.0f, 1.0f, 1.0f};
 		glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, MaterialDiffuse);
-		
+		//
+		glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+		glClearDepth(1.0f);
+		glClearColor(0.f, 0.f, 0.f, 1.f);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		//
+		lights[0].Active(true);
+
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_CULL_FACE);
-		lights[0].Active(true);
 		glEnable(GL_LIGHTING);
 		glEnable(GL_COLOR_MATERIAL);
+		glEnable(GL_TEXTURE_2D);
 	}
 
 	// Projection matrix for
@@ -108,6 +117,7 @@ bool ModuleRenderer3D::Init()
 // PreUpdate: clear buffer
 update_status ModuleRenderer3D::PreUpdate(float dt)
 {
+
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
@@ -152,4 +162,43 @@ void ModuleRenderer3D::OnResize(int width, int height)
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
+}
+
+
+void ModuleRenderer3D::DepthTestEnable(bool enable) {
+	if (enable)
+		glEnable(GL_DEPTH_TEST);
+	else
+		glDisable(GL_DEPTH_TEST);
+}
+
+
+void ModuleRenderer3D::ColorMaterialEnable(bool enable) {
+	if (enable)
+		glEnable(GL_COLOR_MATERIAL);
+	else
+		glDisable(GL_COLOR_MATERIAL);
+
+}
+
+void ModuleRenderer3D::CullFaceEnable(bool enable) {
+	if (enable) 
+		glEnable(GL_CULL_FACE);
+	else
+		glDisable(GL_CULL_FACE);
+	
+}
+
+void ModuleRenderer3D::LightingEnable(bool enable) {
+	if (enable) 
+		glEnable(GL_LIGHTING);
+	else
+		glDisable(GL_LIGHTING);
+}
+
+void ModuleRenderer3D::Texture2DEnable(bool enable) {
+	if (enable)
+		glEnable(GL_TEXTURE_2D);
+	else
+		glDisable(GL_TEXTURE_2D);
 }

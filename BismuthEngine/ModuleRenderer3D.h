@@ -21,6 +21,14 @@ public:
 
 	void OnResize(int width, int height);
 
+	void DepthTestEnable(bool enable);
+	void ColorMaterialEnable(bool enable);
+	void CullFaceEnable(bool enable);
+	void LightingEnable(bool enable);
+	void Texture2DEnable(bool enable);
+
+
+
 public:
 
 	Light lights[MAX_LIGHTS];
