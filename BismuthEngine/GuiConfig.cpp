@@ -46,7 +46,7 @@ void GuiConfig::Draw(){
 
 	App->window->GetSize(window_width, window_height);
 	ImGui::SetNextWindowPos(ImVec2(200, 18), ImGuiCond_Once);
-	ImGui::SetNextWindowSize(ImVec2((float)window_width / 5, (float)window_height - 18), ImGuiCond_Once);
+	ImGui::SetNextWindowSize(ImVec2((float)window_width / 2.5, (float)window_height/2 ), ImGuiCond_Once);
 
 	
 		
