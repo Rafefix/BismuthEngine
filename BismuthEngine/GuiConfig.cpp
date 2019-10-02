@@ -39,43 +39,53 @@ void GuiConfig::Start(){
 }
 
 void GuiConfig::Draw(){
+	
+	if (!visible) {
+		return;
+	}
+
 	App->window->GetSize(window_width, window_height);
 	ImGui::SetNextWindowPos(ImVec2(200, 18), ImGuiCond_Once);
 	ImGui::SetNextWindowSize(ImVec2((float)window_width / 5, (float)window_height - 18), ImGuiCond_Once);
 
-	if (!visible) {
-		return;
-	}
+	
 		
 
-	if (ImGui::Begin("Configuration", &visible, ImGuiWindowFlags_AlwaysAutoResize))
+	if (ImGui::Begin("Configuration", &visible))
 	{
 
-		App->window->GetSize(width, height);
+		if (ImGui::CollapsingHeader("Window")) {
+			App->window->GetSize(width, height);
 
-		ImGui::SliderInt("Width", &width, 1, 1920);
-		ImGui::SliderInt("Height", &height, 1, 1080);
-		ImGui::SliderFloat("Brightness", &brightness, 0.0f, 1.0f);
+			ImGui::SliderInt("Width", &width, 1, 1920);
+			ImGui::SliderInt("Height", &height, 1, 1080);
+			ImGui::SliderFloat("Brightness", &brightness, 0.0f, 1.0f);
 
-		SDL_SetWindowBrightness(App->window->window, brightness);
-		SDL_SetWindowSize(App->window->window, width, height);
+			SDL_SetWindowBrightness(App->window->window, brightness);
+			SDL_SetWindowSize(App->window->window, width, height);
 
 
-		if (ImGui::Checkbox("Full Screen", &fullscreen)){
-			App->window->SetFullScreen(fullscreen);
-		}else {
-			SDL_SetWindowSize(App->window->window, 1024, 768);
+			if (ImGui::Checkbox("Full Screen", &fullscreen)) {
+				App->window->SetFullScreen(fullscreen);
+			}
+			else {
+				SDL_SetWindowSize(App->window->window, 1024, 768);
 
+			}
+
+
+
+			if (ImGui::Checkbox("Resizable", &resizable)) {
+				App->window->SetResizable(resizable);
+			}
+
+			if (ImGui::Checkbox("Borderless", &borderless)) {
+				App->window->SetBorderless(borderless);
+			}
 		}
-			
 		
-
-		if (ImGui::Checkbox("Resizable", &resizable)) {
-			App->window->SetResizable(resizable); 
-		}
-
-		if (ImGui::Checkbox("Borderless", &borderless)) {
-			App->window->SetBorderless(borderless);
+		if (ImGui::CollapsingHeader("Style editor")) {
+			ImGui::ShowStyleEditor();
 		}
 		
 		if (ImGui::CollapsingHeader("Input")){
@@ -191,11 +201,11 @@ void GuiConfig::Draw(){
 		}
 
 
-
-		ImGui::End();
+		
+		
 	}
 
-
+	ImGui::End();
 }
 
 void GuiConfig::CleanUp()
