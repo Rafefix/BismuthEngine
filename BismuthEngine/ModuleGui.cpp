@@ -9,12 +9,18 @@
 #include "WindowBase.h"
 #include <stdio.h>
 
-
+//#include "json/json.hpp"
 
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
 #include "imgui_impl_opengl3.h"
 #include "glew/include/GL/glew.h"
+
+#include "imgui.h"
+#include "imgui_impl_sdl.h"
+#include "imgui_impl_opengl3.h"
+#include "imgui_internal.h"
+
 
 #include "ModuleRenderer3D.h"
 
@@ -91,7 +97,7 @@ update_status ModuleGui::Update(float dt)
 		(*item)->Draw();
 	}
 
-	ImVec4 clear_color = ImVec4(0.15f, 0.15f, 0.15f, 0.50f);
+	
 
 	// Main Menu
 	if (ImGui::BeginMainMenuBar())
@@ -184,12 +190,8 @@ update_status ModuleGui::Update(float dt)
 		
 	}
 
-	ImGuiIO& test_io = *io;
-	// Rendering
-	ImGui::Render();
-	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-	glViewport(0, 0, (int)test_io.DisplaySize.x, (int)test_io.DisplaySize.y);
-	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
+
+	
 
 	return ret;
 }
@@ -211,6 +213,18 @@ void ModuleGui::HelpMarker(const char * desc)
 		ImGui::PopTextWrapPos();
 		ImGui::EndTooltip();
 	}
+}
+
+void ModuleGui::Draw() const
+{
+	ImGuiIO& test_io = *io;
+	// Render
+	ImVec4 clear_color = ImVec4(0.15f, 0.15f, 0.15f, 0.50f);
+
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+	glViewport(0, 0, (int)test_io.DisplaySize.x, (int)test_io.DisplaySize.y);
+	glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
 }
 
 

@@ -49,6 +49,7 @@ public:
 	bool Init();
 	bool Start();
 	bool CleanUp();
+	void Draw() const;
 
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
@@ -56,7 +57,7 @@ public:
 private:
 
 	void AddGuiElement(GuiElement* element);
-	void StyleEditor(ImGuiStyle* ref = NULL);
+	
 	void HelpMarker(const char* desc);
 
 
