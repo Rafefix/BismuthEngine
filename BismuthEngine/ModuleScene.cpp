@@ -1,11 +1,10 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleScene.h"
-#include "Primitive.h"
-#include "PhysBody3D.h"
+
 #include "ModuleRenderer3D.h"
 #include "Math.h"
-
+#include "par_shapes.h"
 
 
 GLfloat vertices1[] = { 1, 1, 1,  -1, 1, 1,  -1,-1, 1,      // v0-v1-v2 (front)

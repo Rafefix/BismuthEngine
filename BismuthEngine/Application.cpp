@@ -7,7 +7,6 @@ Application::Application(){
 	audio = new ModuleAudio(this, true);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
-	physics = new ModulePhysics3D(this);
 	scene = new ModuleScene(this);
 	gui = new ModuleGui(this);
 
@@ -20,7 +19,7 @@ Application::Application(){
 	AddModule(camera);
 	AddModule(input);
 	AddModule(audio);
-	AddModule(physics);
+	
 	
 	
 	// Scenes

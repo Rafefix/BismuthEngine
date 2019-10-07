@@ -9,7 +9,6 @@
 #include "ModuleAudio.h"
 #include "ModuleRenderer3D.h"
 #include "ModuleCamera3D.h"
-#include "ModulePhysics3D.h"
 #include "ModuleScene.h"
 #include "ModuleGui.h"
 
@@ -25,7 +24,7 @@ public:
 	ModuleAudio* audio;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
-	ModulePhysics3D* physics;
+
 	ModuleScene* scene;
 	ModuleGui* gui;
 
