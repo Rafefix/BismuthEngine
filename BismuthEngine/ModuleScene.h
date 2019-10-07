@@ -18,7 +18,7 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 	void directcube();
-	void arraycube();
+	
 
 
 public:
@@ -27,4 +27,15 @@ public:
 
 	PhysBody3D* pb_snake2[MAX_SNAKE];
 	Sphere s_snake2[MAX_SNAKE];
+
+
+
+
+public:
+	void createSquare();
+	void createSquareElements();
+
+	
+
 };
+
