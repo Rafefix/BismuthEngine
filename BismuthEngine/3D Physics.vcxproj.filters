@@ -135,6 +135,9 @@
     <ClInclude Include="WindowBase.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
+    <ClInclude Include="P:\Coping motors\include\Json\nlohmann\json.hpp">
+      <Filter>Sources\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">

@@ -37,6 +37,7 @@ void GuiAbout::Draw()
 		ImGui::BulletText("ImGui");
 		ImGui::BulletText("MathGeoLib");
 		ImGui::BulletText("OpenGL");
+		ImGui::BulletText("JSON");
 		//RANDOM NUMBER GENERATOR CHECK LATER
 
 		ImGui::Text("\nMIT License");
