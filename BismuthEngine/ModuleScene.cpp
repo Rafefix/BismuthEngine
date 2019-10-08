@@ -125,8 +125,8 @@ bool ModuleScene::CleanUp()
 // Update
 update_status ModuleScene::Update(float dt)
 {
-	
-	directcube();
+	createfloor();
+	//directcube();
 	createSquare();
 	createSquareElements();
 	/*
@@ -134,6 +134,7 @@ update_status ModuleScene::Update(float dt)
 	p.axis = true;
 	p.Render();
 	*/
+	//creatingshapes();
 
 	return UPDATE_CONTINUE;
 }
@@ -229,4 +230,57 @@ void ModuleScene::createSquareElements()
 	glDisableClientState(GL_VERTEX_ARRAY);  // disable vertex arrays
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
+}
+
+void ModuleScene::creatingshapes() {
+
+
+	par_shapes_mesh *cube1 = par_shapes_create_cube();
+	par_shapes_scale(cube1, 1, 1, 1);
+
+	
+	glEnableClientState(GL_NORMAL_ARRAY);
+	glEnableClientState(GL_COLOR_ARRAY);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	glNormalPointer(GL_FLOAT, 0, cube1->normals);
+	glVertexPointer(3, GL_FLOAT, 0, cube1->points);
+
+	glPushMatrix();
+	glTranslatef(2, 2, 0);                  // move to upper-right corner
+
+	glDrawElements(GL_TRIANGLES, cube1->ntriangles, GL_UNSIGNED_BYTE, cube1->triangles);
+
+	glPopMatrix();
+
+	glDisableClientState(GL_VERTEX_ARRAY);  // disable vertex arrays
+	glDisableClientState(GL_COLOR_ARRAY);
+	glDisableClientState(GL_NORMAL_ARRAY);
+
+}
+
+void ModuleScene::createfloor()
+{
+	//Direct CUBE
+	glLineWidth(1.0f);
+
+	glBegin(GL_LINES);
+
+	for (int i = -200.f; i < 200.f; i=i+1.f) {
+		
+		glVertex3f(-200.f, 0.f, i);
+		glVertex3f(200.f, 0.f, i);
+	}
+
+	for (int i = -200.f; i < 200.f; i = i + 1.f) {
+
+		glVertex3f(i, 0.f, -200.f);
+		glVertex3f(i, 0.f, 200.f);
+	}
+
+
+	
+
+
+	glEnd();
+
 }

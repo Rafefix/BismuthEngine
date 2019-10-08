@@ -32,7 +32,7 @@ private:
 	bool	fulldesktop = false;
 	bool	DepthTest = true;
 	bool	CullFace = true;
-	bool	MaterialColor = false;
+	bool	MaterialColor = true;
 	bool	Lighting = true;
 	bool	Texture2D = false;
 

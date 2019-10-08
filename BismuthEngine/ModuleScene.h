@@ -4,6 +4,8 @@
 #include "Globals.h"
 
 
+
+
 #define MAX_SNAKE 8
 
 struct PhysBody3D;
@@ -27,7 +29,8 @@ public:
 public:
 	void createSquare();
 	void createSquareElements();
-
+	void creatingshapes();
+	void createfloor();
 	
 
 };

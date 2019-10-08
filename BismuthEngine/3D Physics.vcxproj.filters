@@ -132,11 +132,11 @@
     <ClInclude Include="json\json.hpp">
       <Filter>Sources\json</Filter>
     </ClInclude>
-    <ClInclude Include="par_shapes.h">
-      <Filter>Sources\Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="GuiConsole.h">
       <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
+    <ClInclude Include="par_shapes.h">
+      <Filter>Sources\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

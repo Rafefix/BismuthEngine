@@ -27,7 +27,6 @@
 #define PAR_SHAPES_H
 #define PAR_SHAPES_IMPLEMENTATION
 
-
 #ifdef __cplusplus
 extern "C" {
 #endif
