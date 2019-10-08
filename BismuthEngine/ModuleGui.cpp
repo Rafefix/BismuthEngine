@@ -241,3 +241,7 @@ bool ModuleGui::CleanUp()
 	return true;
 }
 
+void ModuleGui::MouseInput(SDL_Event * event) {
+
+	ImGui_ImplSDL2_ProcessEvent(event);
+}

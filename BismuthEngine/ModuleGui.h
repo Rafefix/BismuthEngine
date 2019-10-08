@@ -5,6 +5,7 @@
 #include <list>
 #include <string>
 #include "imgui.h"
+#include "SDL/include/SDL_events.h"
 
 #include "SDL/include/SDL_rect.h"
 #include "SDL/include/SDL_video.h"
@@ -51,7 +52,7 @@ public:
 	bool Start();
 	bool CleanUp();
 	void Draw() const;
-
+	void MouseInput(SDL_Event * event);
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
 	
