@@ -6,6 +6,7 @@
 #include "ModuleWindow.h"
 #include "GuiConfig.h"
 #include "GuiAbout.h"
+#include "GuiConsole.h"
 #include "WindowBase.h"
 #include <stdio.h>
 
@@ -40,10 +41,13 @@ bool ModuleGui::Init()
 	windowbase = new WindowBase(true);
 	config = new GuiConfig(false);
 	about = new GuiAbout(false);
+	console = new GuiConsole(false);
+
 
 	AddGuiElement(windowbase);
 	AddGuiElement(config);
 	AddGuiElement(about);
+	AddGuiElement(console);
 
 	return true;
 }
@@ -145,6 +149,9 @@ update_status ModuleGui::Update(float dt)
 		}
 
 		if (ImGui::BeginMenu("Window")){
+
+			if (ImGui::Checkbox("Console", &show_console))
+				console->visible = !console->visible;
 			ImGui::EndMenu();
 		}
 
@@ -183,14 +190,6 @@ update_status ModuleGui::Update(float dt)
 	if (show_demo_window) {
 		ImGui::ShowDemoWindow(&show_demo_window);
 	}
-	
-	
-	if (show_config) {
-		config->visible = true;
-		
-	}
-
-
 	
 
 	return ret;

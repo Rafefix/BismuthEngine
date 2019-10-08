@@ -135,6 +135,9 @@
     <ClInclude Include="par_shapes.h">
       <Filter>Sources\Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="GuiConsole.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -207,6 +210,9 @@
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
     <ClCompile Include="WindowBase.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiConsole.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>

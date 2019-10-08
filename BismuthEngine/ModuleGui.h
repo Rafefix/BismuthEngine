@@ -19,6 +19,7 @@ struct SDL_Color;
 class WindowBase;
 class GuiConfig;
 class GuiAbout;
+class GuiConsole;
 
 class  GuiElement
 {
@@ -65,13 +66,14 @@ private:
 
 	bool show_demo_window = false;
 	bool show_style_editor = false;
-	bool show_config = false;
+	bool show_console = false;
 
 	class std::list<GuiElement*> gui_elements;
 
 	WindowBase* windowbase = nullptr;
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
+	GuiConsole* console = nullptr;
 
 public:
 
