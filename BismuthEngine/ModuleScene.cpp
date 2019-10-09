@@ -212,6 +212,7 @@ void ModuleScene::createSquare()
 
 void ModuleScene::createSquareElements()
 {
+
 	// enable and specify pointers to vertex arrays
 	glEnableClientState(GL_NORMAL_ARRAY);
 	glEnableClientState(GL_COLOR_ARRAY);
@@ -230,32 +231,6 @@ void ModuleScene::createSquareElements()
 	glDisableClientState(GL_VERTEX_ARRAY);  // disable vertex arrays
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
-}
-
-void ModuleScene::creatingshapes() {
-
-
-	par_shapes_mesh *cube1 = par_shapes_create_cube();
-	par_shapes_scale(cube1, 1, 1, 1);
-
-	
-	glEnableClientState(GL_NORMAL_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glNormalPointer(GL_FLOAT, 0, cube1->normals);
-	glVertexPointer(3, GL_FLOAT, 0, cube1->points);
-
-	glPushMatrix();
-	glTranslatef(2, 2, 0);                  // move to upper-right corner
-
-	glDrawElements(GL_TRIANGLES, cube1->ntriangles, GL_UNSIGNED_BYTE, cube1->triangles);
-
-	glPopMatrix();
-
-	glDisableClientState(GL_VERTEX_ARRAY);  // disable vertex arrays
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_NORMAL_ARRAY);
-
 }
 
 void ModuleScene::createfloor()

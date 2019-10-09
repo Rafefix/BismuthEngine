@@ -29,7 +29,6 @@ public:
 public:
 	void createSquare();
 	void createSquareElements();
-	void creatingshapes();
 	void createfloor();
 	
 

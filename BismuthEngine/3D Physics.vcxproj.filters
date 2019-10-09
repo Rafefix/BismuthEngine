@@ -141,6 +141,9 @@
     <ClInclude Include="ModuleImporter.h">
       <Filter>Sources\Modules</Filter>
     </ClInclude>
+    <ClInclude Include="NewPrimitives.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -219,6 +222,9 @@
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleImporter.cpp">
+      <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="NewPrimitives.cpp">
       <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
