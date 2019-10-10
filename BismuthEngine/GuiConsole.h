@@ -12,6 +12,7 @@ public:
 
 	ImVector<char*> LogList;
 
+	bool Scroll;
 
 public:
 
