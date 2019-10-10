@@ -110,7 +110,7 @@ bool ModuleScene::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	shape = new Primitives(SHAPE::CUBE,vec3(0, 0, 0), vec3(1, 1, 1));
+	shape = new Primitives(SHAPE::CYLINDER,vec3(0, 0, 0), vec3(1, 1, 1));
 
 	return ret;
 }

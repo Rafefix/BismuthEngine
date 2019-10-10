@@ -10,30 +10,45 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		mesh = par_shapes_create_cube();
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::SPHERE:
 		mesh = par_shapes_create_parametric_sphere(24, 12);
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::OCTOHEDRON:
 		mesh = par_shapes_create_octahedron();
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::DODECAHEDRON:
 		mesh = par_shapes_create_dodecahedron();
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::ICOSAHEDRON:
 		mesh = par_shapes_create_icosahedron();
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::TETRAHEDRON:
 		mesh = par_shapes_create_tetrahedron();
 		par_shapes_compute_normals(mesh);
 		break;
+	
 	case SHAPE::PLANE:
 		mesh = par_shapes_create_plane(3, 3);
 		par_shapes_rotate(mesh, -M_PI_2, rotation);
 		break;
+
+	case SHAPE::TORUS:
+		radius = 0.2f;
+		slices = 20;
+		stacks = 20;
+		mesh = par_shapes_create_torus(slices, stacks, radius);
+		par_shapes_rotate(mesh, -M_PI_2, rotation);
+	
+	
 	}
 
 	par_shapes_scale(mesh, size.x, size.y, size.z);

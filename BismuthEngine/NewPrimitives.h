@@ -17,7 +17,8 @@ enum class SHAPE
 	ICOSAHEDRON,
 	TETRAHEDRON,
 	PLANE,
-	SPHERE
+	SPHERE,
+	TORUS
 };
 
 
@@ -34,12 +35,21 @@ public:
 	void Draw();
 
 	par_shapes_mesh* mesh = nullptr;
+	par_shapes_mesh* disk1 = nullptr;
+	
 
 	std::vector<float> triangle_vec;
 	std::vector<float> normal_vec;
 
 	GLuint vertex_id;
 	GLuint normal_id;
+	float radius;
+	int slices;
+	int stacks;
 	float rotation[3] = { 1, 0, 0 };
+	float center[3] = { 0, 0, 1 };
+	float normal[3] = { 0, 0, 1 };
+	float center2[3] = { 0, 0, 0 };
+	
 };
 #endif __NEWPRIMITIVES__H__
