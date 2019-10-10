@@ -9,7 +9,6 @@
 
 #include <vector>
 
-using namespace std;
 
 class Primitives
 {
@@ -24,8 +23,8 @@ public:
 
 	par_shapes_mesh* mesh = nullptr;
 
-	vector<float> triangle_vec;
-	vector<float> normal_vec;
+	std::vector<float> triangle_vec;
+	std::vector<float> normal_vec;
 
 	GLuint vertex_id;
 	GLuint normal_id;
