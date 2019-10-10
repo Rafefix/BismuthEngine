@@ -12,8 +12,24 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		break;
 	case SHAPE::SPHERE:
 		mesh = par_shapes_create_parametric_sphere(24, 12);
+		par_shapes_compute_normals(mesh);
 		break;
-	
+	case SHAPE::OCTOHEDRON:
+		mesh = par_shapes_create_octahedron();
+		par_shapes_compute_normals(mesh);
+		break;
+	case SHAPE::DODECAHEDRON:
+		mesh = par_shapes_create_dodecahedron();
+		par_shapes_compute_normals(mesh);
+		break;
+	case SHAPE::ICOSAHEDRON:
+		mesh = par_shapes_create_icosahedron();
+		par_shapes_compute_normals(mesh);
+		break;
+	case SHAPE::TETRAHEDRON:
+		mesh = par_shapes_create_tetrahedron();
+		par_shapes_compute_normals(mesh);
+		break;
 	}
 
 	par_shapes_scale(mesh, size.x, size.y, size.z);
