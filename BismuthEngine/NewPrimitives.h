@@ -17,7 +17,8 @@ public:
 	Primitives::Primitives(vec3 position, vec3 size);
 	~Primitives();
 
-
+private:
+	void ChangeList(par_shapes_mesh * mesh);
 public:
 	void Draw();
 

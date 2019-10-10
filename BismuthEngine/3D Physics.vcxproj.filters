@@ -142,7 +142,7 @@
       <Filter>Sources\Modules</Filter>
     </ClInclude>
     <ClInclude Include="NewPrimitives.h">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -225,7 +225,7 @@
       <Filter>Sources\Modules</Filter>
     </ClCompile>
     <ClCompile Include="NewPrimitives.cpp">
-      <Filter>Sources\Modules</Filter>
+      <Filter>Sources\Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
