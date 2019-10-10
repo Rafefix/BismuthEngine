@@ -2,7 +2,7 @@
 
 
 
-Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
+Primitives::Primitives(SHAPE shape,vec3& position, vec3& size, float radius, float slices, float stacks){
 
 	switch (shape){
 
@@ -41,12 +41,12 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		par_shapes_rotate(mesh, -M_PI_2, rotation);
 		break;
 
-	case SHAPE::TORUS:
+	/*case SHAPE::TORUS: 
 		radius = 0.2f;
 		slices = 20;
 		stacks = 20;
 		mesh = par_shapes_create_torus(slices, stacks, radius);
-		par_shapes_rotate(mesh, -M_PI_2, rotation);
+		par_shapes_rotate(mesh, -M_PI_2, rotation);*/
 	
 	case SHAPE::CONE:
 		radius = 1.0f;
