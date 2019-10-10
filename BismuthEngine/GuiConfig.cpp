@@ -4,7 +4,7 @@
 #include "ModuleRenderer3D.h"
 #include "imgui.h"
 #include "glew/include/GL/glew.h"
-#include <stdio.h>
+#include <stdlib.h>
 
 GuiConfig::GuiConfig(bool is_visible) : GuiElement(is_visible) {}
 

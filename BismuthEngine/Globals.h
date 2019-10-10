@@ -18,6 +18,7 @@ void log(const char file[], int line, const char* format, ...);
 #define HAVE_M_PI
 #define IM_NEWLINE  "\r\n"
 
+#define LOG_CONSOLE(text, ...) App->console->AddLog(text, __VA_ARGS__);
 
 typedef unsigned int uint;
 
