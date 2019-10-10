@@ -9,21 +9,20 @@
 #include "par_shapes.h"
 
 
-enum class SHAPE
-{
-	CUBE,
-	SPHERE
-};
 
 
 class Primitives
 {
 public:
-	Primitives::Primitives(SHAPE shape,vec3 &position, vec3 &size);
+	Primitives::Primitives();
 	~Primitives();
+
+	void bufferfigure(vec3 &position, vec3 &size);
+	void createcube(vec3 &position, vec3 &size);
 
 private:
 	void ChangeList(par_shapes_mesh * mesh);
+
 public:
 	void Draw();
 

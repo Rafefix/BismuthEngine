@@ -109,7 +109,7 @@ bool ModuleScene::Start()
 
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
-
+	shape->createcube(vec3(0, 0, 0), vec3(1, 1, 1));
 	
 	return ret;
 }
@@ -125,16 +125,14 @@ bool ModuleScene::CleanUp()
 // Update
 update_status ModuleScene::Update(float dt)
 {
+	
+
 	createfloor();
 	//directcube();
 	createSquare();
 	createSquareElements();
-	/*
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
-	*/
-	//creatingshapes();
+	shape->Draw();
+	
 
 	return UPDATE_CONTINUE;
 }
