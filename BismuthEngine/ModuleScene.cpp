@@ -127,13 +127,14 @@ bool ModuleScene::CleanUp()
 // Update
 update_status ModuleScene::Update(float dt)
 {
-	createfloor();
+	
 	//directcube();
-	createSquare();
-	createSquareElements();
+//	createSquare();
+	//createSquareElements();
 
 	shape->Draw();
 	shape2->Draw();
+	createfloor();
 	return UPDATE_CONTINUE;
 }
 

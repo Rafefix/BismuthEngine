@@ -59,16 +59,11 @@ Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, fl
 	switch (shape) {
 
 	/*case SHAPE::TORUS:
-		radius = 0.2f;
-		slices = 20;
-		stacks = 20;
 		mesh = par_shapes_create_torus(slices, stacks, radius);
 		par_shapes_rotate(mesh, -M_PI_2, rotation);*/
 
 	case SHAPE::CONE:
-		radius = 1.0f;
-		slices = 20;
-		stacks = 10;
+		
 		mesh = par_shapes_create_cone(slices, stacks);
 		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
 		par_shapes_rotate(disk1, -M_PI, rotation);
@@ -78,9 +73,7 @@ Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, fl
 		break;
 
 	case SHAPE::CYLINDER:
-		radius = 1.0f;
-		slices = 20;
-		stacks = 20;
+	
 		mesh = par_shapes_create_cylinder(slices, stacks);
 		disk2 = par_shapes_create_disk(radius, slices, center, normal);
 		par_shapes_merge(mesh, disk2);
