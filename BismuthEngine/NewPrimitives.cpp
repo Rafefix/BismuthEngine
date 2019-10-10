@@ -30,6 +30,10 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		mesh = par_shapes_create_tetrahedron();
 		par_shapes_compute_normals(mesh);
 		break;
+	case SHAPE::PLANE:
+		mesh = par_shapes_create_plane(3, 3);
+		par_shapes_rotate(mesh, -M_PI_2, rotation);
+		break;
 	}
 
 	par_shapes_scale(mesh, size.x, size.y, size.z);

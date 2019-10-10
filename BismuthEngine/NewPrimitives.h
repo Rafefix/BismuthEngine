@@ -16,6 +16,7 @@ enum class SHAPE
 	DODECAHEDRON,
 	ICOSAHEDRON,
 	TETRAHEDRON,
+	PLANE,
 	SPHERE
 };
 
@@ -39,6 +40,6 @@ public:
 
 	GLuint vertex_id;
 	GLuint normal_id;
-
+	float rotation[3] = { 1, 0, 0 };
 };
 #endif __NEWPRIMITIVES__H__
