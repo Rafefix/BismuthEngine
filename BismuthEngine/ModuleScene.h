@@ -27,6 +27,7 @@ public:
 
 public:
 	Primitives* shape;
+	Primitives* shape2;
 
 public:
 	void createSquare();

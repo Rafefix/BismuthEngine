@@ -111,6 +111,7 @@ bool ModuleScene::Start()
 	App->camera->LookAt(vec3(0, 0, 0));
 
 	shape = new Primitives(SHAPE::CYLINDER,vec3(0, 0, 0), vec3(1, -4, 1),1,20,20);
+	shape2 = new Primitives(SHAPE::CUBE, vec3(10, 0, 0), vec3(1, 4, 1));
 
 	return ret;
 }
@@ -132,6 +133,7 @@ update_status ModuleScene::Update(float dt)
 	createSquareElements();
 
 	shape->Draw();
+	shape2->Draw();
 	return UPDATE_CONTINUE;
 }
 

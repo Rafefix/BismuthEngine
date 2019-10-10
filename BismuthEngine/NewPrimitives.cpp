@@ -2,7 +2,7 @@
 
 
 
-Primitives::Primitives(SHAPE shape,vec3& position, vec3& size, float radius, float slices, float stacks){
+Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 
 	switch (shape){
 
@@ -41,13 +41,30 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size, float radius, flo
 		par_shapes_rotate(mesh, -M_PI_2, rotation);
 		break;
 
-	/*case SHAPE::TORUS: 
+	}
+
+	par_shapes_scale(mesh, size.x, size.y, size.z);
+	par_shapes_translate(mesh, position.x, position.y, position.z);
+
+	ChangeList(mesh);
+	par_shapes_free_mesh(mesh);
+
+	Bufferer();
+	
+
+}
+
+Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, float slices, float stacks) {
+
+	switch (shape) {
+
+	/*case SHAPE::TORUS:
 		radius = 0.2f;
 		slices = 20;
 		stacks = 20;
 		mesh = par_shapes_create_torus(slices, stacks, radius);
 		par_shapes_rotate(mesh, -M_PI_2, rotation);*/
-	
+
 	case SHAPE::CONE:
 		radius = 1.0f;
 		slices = 20;
@@ -83,8 +100,6 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size, float radius, flo
 	par_shapes_free_mesh(mesh);
 
 	Bufferer();
-	
-
 }
 
 

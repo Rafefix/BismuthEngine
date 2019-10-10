@@ -27,7 +27,8 @@ enum class SHAPE
 class Primitives
 {
 public:
-	Primitives::Primitives(SHAPE shape,vec3 &position, vec3 &size, float radius, float slices, float stacks);
+	Primitives::Primitives(SHAPE shape,vec3 &position, vec3 &size);
+	Primitives::Primitives(SHAPE shape, vec3 &position, vec3 &size, float radius, float slices, float stacks);
 	~Primitives();
 
 private:
