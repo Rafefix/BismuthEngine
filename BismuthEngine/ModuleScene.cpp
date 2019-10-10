@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleScene.h"
-#include "NewPrimitives.h"
+//#include "NewPrimitives.h"
 #include "ModuleRenderer3D.h"
 #include "math.h"
 
