@@ -19,7 +19,8 @@ enum class SHAPE
 	PLANE,
 	SPHERE,
 	TORUS,
-	CONE
+	CONE,
+	CYLINDER
 };
 
 

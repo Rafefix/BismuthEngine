@@ -60,6 +60,20 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		par_shapes_rotate(mesh, -M_PI_2, rotation);
 		break;
 
+	case SHAPE::CYLINDER:
+		radius = 1.0f;
+		slices = 20;
+		stacks = 20;
+		mesh = par_shapes_create_cylinder(slices, stacks);
+		disk2 = par_shapes_create_disk(radius, slices, center, normal);
+		par_shapes_merge(mesh, disk2);
+		par_shapes_free_mesh(disk2);
+		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
+		par_shapes_rotate(disk1, M_PI, rotation);
+		par_shapes_merge(mesh, disk1);
+		par_shapes_free_mesh(disk1);
+		par_shapes_rotate(mesh, M_PI_2, rotation);
+		break;
 	}
 
 	par_shapes_scale(mesh, size.x, size.y, size.z);
