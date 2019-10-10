@@ -2,8 +2,37 @@
 
 
 
-Primitives::Primitives(){
-	//mesh = par_shapes_create_parametric_sphere(24, 12);
+Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
+
+	switch (shape){
+
+	case SHAPE::CUBE:
+		mesh = par_shapes_create_cube();
+		par_shapes_compute_normals(mesh);
+		break;
+	case SHAPE::SPHERE:
+		mesh = par_shapes_create_parametric_sphere(24, 12);
+		break;
+	
+	}
+
+	par_shapes_scale(mesh, size.x, size.y, size.z);
+	par_shapes_translate(mesh, position.x, position.y, position.z);
+
+	ChangeList(mesh);
+	par_shapes_free_mesh(mesh);
+
+	glGenBuffers(1, &vertex_id);
+	glBindBuffer(GL_ARRAY_BUFFER, vertex_id);
+
+	glBufferData(GL_ARRAY_BUFFER, triangle_vec.size() * sizeof(GL_FLOAT), &triangle_vec[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &normal_id);
+	glBindBuffer(GL_ARRAY_BUFFER, normal_id);
+	glBufferData(GL_ARRAY_BUFFER, normal_vec.size() * sizeof(GL_FLOAT), &normal_vec[0], GL_STATIC_DRAW);
+	
+	
+
 }
 
 
@@ -52,30 +81,4 @@ void Primitives::ChangeList(par_shapes_mesh * mesh){
 			normal_vec.push_back(*normals++);
 		}
 	}
-}
-
-void Primitives::createcube(vec3 &position, vec3 &size) {
-
-	mesh = par_shapes_create_cube();
-	par_shapes_compute_normals(mesh);
-	bufferfigure(position,size);
-	
-}
-
-void Primitives::bufferfigure(vec3 &position, vec3 &size) {
-	
-	par_shapes_scale(mesh, size.x, size.y, size.z);
-	par_shapes_translate(mesh, position.x, position.y, position.z);
-
-	ChangeList(mesh);
-	par_shapes_free_mesh(mesh);
-
-	glGenBuffers(1, &vertex_id);
-	glBindBuffer(GL_ARRAY_BUFFER, vertex_id);
-
-	glBufferData(GL_ARRAY_BUFFER, triangle_vec.size() * sizeof(GL_FLOAT), &triangle_vec[0], GL_STATIC_DRAW);
-
-	glGenBuffers(1, &normal_id);
-	glBindBuffer(GL_ARRAY_BUFFER, normal_id);
-	glBufferData(GL_ARRAY_BUFFER, normal_vec.size() * sizeof(GL_FLOAT), &normal_vec[0], GL_STATIC_DRAW);
 }
