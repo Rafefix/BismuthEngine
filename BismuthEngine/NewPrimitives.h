@@ -7,6 +7,8 @@
 #include "glew/include/GL/glew.h"
 #include <vector>
 #include "par_shapes.h"
+
+
 enum class SHAPE
 {
 	CUBE,

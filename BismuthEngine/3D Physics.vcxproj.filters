@@ -227,5 +227,8 @@
     <ClCompile Include="NewPrimitives.cpp">
       <Filter>Sources\Tools</Filter>
     </ClCompile>
+    <ClCompile Include="par_shapes.cpp">
+      <Filter>Sources\Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
