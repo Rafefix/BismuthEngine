@@ -18,7 +18,8 @@ enum class SHAPE
 	TETRAHEDRON,
 	PLANE,
 	SPHERE,
-	TORUS
+	TORUS,
+	CONE
 };
 
 
@@ -36,7 +37,7 @@ public:
 
 	par_shapes_mesh* mesh = nullptr;
 	par_shapes_mesh* disk1 = nullptr;
-	
+	par_shapes_mesh* disk2 = nullptr;
 
 	std::vector<float> triangle_vec;
 	std::vector<float> normal_vec;
