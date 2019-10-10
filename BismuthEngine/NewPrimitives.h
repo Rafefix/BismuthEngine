@@ -2,18 +2,22 @@
 #define __NEWPRIMITIVES__H__
 
 #include "Globals.h"
-#include "par_shapes.h"
+
 #include "glmath.h"
-
 #include "glew/include/GL/glew.h"
-
 #include <vector>
+#include "par_shapes.h"
+enum class SHAPE
+{
+	CUBE,
+	SPHERE
+};
 
 
 class Primitives
 {
 public:
-	Primitives::Primitives(vec3 position, vec3 size);
+	Primitives::Primitives(SHAPE shape,vec3 &position, vec3 &size);
 	~Primitives();
 
 private:

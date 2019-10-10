@@ -1,10 +1,10 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleScene.h"
-
+#include "NewPrimitives.h"
 #include "ModuleRenderer3D.h"
-#include "Math.h"
-#include "par_shapes.h"
+#include "math.h"
+
 
 
 GLfloat vertices1[] = { 1, 1, 1,  -1, 1, 1,  -1,-1, 1,      // v0-v1-v2 (front)
@@ -110,7 +110,7 @@ bool ModuleScene::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-
+	
 	return ret;
 }
 
