@@ -22,15 +22,7 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 	ChangeList(mesh);
 	par_shapes_free_mesh(mesh);
 
-	glGenBuffers(1, &vertex_id);
-	glBindBuffer(GL_ARRAY_BUFFER, vertex_id);
-
-	glBufferData(GL_ARRAY_BUFFER, triangle_vec.size() * sizeof(GL_FLOAT), &triangle_vec[0], GL_STATIC_DRAW);
-
-	glGenBuffers(1, &normal_id);
-	glBindBuffer(GL_ARRAY_BUFFER, normal_id);
-	glBufferData(GL_ARRAY_BUFFER, normal_vec.size() * sizeof(GL_FLOAT), &normal_vec[0], GL_STATIC_DRAW);
-	
+	Bufferer();
 	
 
 }
@@ -81,4 +73,16 @@ void Primitives::ChangeList(par_shapes_mesh * mesh){
 			normal_vec.push_back(*normals++);
 		}
 	}
+}
+
+void Primitives::Bufferer() {
+
+	glGenBuffers(1, &vertex_id);
+	glBindBuffer(GL_ARRAY_BUFFER, vertex_id);
+
+	glBufferData(GL_ARRAY_BUFFER, triangle_vec.size() * sizeof(GL_FLOAT), &triangle_vec[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &normal_id);
+	glBindBuffer(GL_ARRAY_BUFFER, normal_id);
+	glBufferData(GL_ARRAY_BUFFER, normal_vec.size() * sizeof(GL_FLOAT), &normal_vec[0], GL_STATIC_DRAW);
 }

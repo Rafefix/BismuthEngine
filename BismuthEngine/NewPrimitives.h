@@ -24,6 +24,7 @@ public:
 
 private:
 	void ChangeList(par_shapes_mesh * mesh);
+	void Bufferer();
 public:
 	void Draw();
 

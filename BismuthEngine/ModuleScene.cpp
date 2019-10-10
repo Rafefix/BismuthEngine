@@ -110,7 +110,8 @@ bool ModuleScene::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	
+	shape = new Primitives(SHAPE::CUBE,vec3(0, 0, 0), vec3(1, 1, 1));
+
 	return ret;
 }
 
@@ -129,13 +130,8 @@ update_status ModuleScene::Update(float dt)
 	//directcube();
 	createSquare();
 	createSquareElements();
-	/*
-	Plane p(0, 1, 0, 0);
-	p.axis = true;
-	p.Render();
-	*/
-	//creatingshapes();
 
+	shape->Draw();
 	return UPDATE_CONTINUE;
 }
 
