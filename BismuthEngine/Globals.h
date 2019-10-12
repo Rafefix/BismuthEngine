@@ -21,7 +21,25 @@ void log(const char file[], int line, const char* format, ...);
 #define LOG_CONSOLE(text, ...) App->console->AddLog(text, __VA_ARGS__);
 
 typedef unsigned int uint;
+//Buffer release 
+#define RELEASE( x )\
+    {\
+       if( x != nullptr )\
+       {\
+         delete x;\
+	     x = nullptr;\
+       }\
+    }
 
+
+#define RELEASE_ARRAY( x )\
+	{\
+       if( x != nullptr )\
+       {\
+           delete[] x;\
+	       x = nullptr;\
+		 }\
+	}
 enum update_status
 {
 	UPDATE_CONTINUE = 1,
