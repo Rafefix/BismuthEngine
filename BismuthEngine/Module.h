@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Globals.h"
+#include "JsonLoader.h"
 
 class Application;
 struct PhysBody3D;
@@ -19,7 +20,7 @@ public:
 	virtual ~Module()
 	{}
 
-	virtual bool Init() 
+	virtual bool Init(json file) 
 	{
 		return true; 
 	}
