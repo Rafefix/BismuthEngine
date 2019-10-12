@@ -144,6 +144,9 @@
     <ClInclude Include="NewPrimitives.h">
       <Filter>Sources\Tools</Filter>
     </ClInclude>
+    <ClInclude Include="JsonLoader.h">
+      <Filter>Sources\json</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleAudio.cpp">
@@ -229,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="par_shapes.cpp">
       <Filter>Sources\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonLoader.cpp">
+      <Filter>Sources\json</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
