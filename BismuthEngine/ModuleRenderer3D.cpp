@@ -3,7 +3,7 @@
 #include "ModuleRenderer3D.h"
 #include "SDL\include\SDL_opengl.h"
 #include "ModuleGui.h"
-
+#include "ModuleImporter.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -20,7 +20,7 @@ ModuleRenderer3D::~ModuleRenderer3D()
 {}
 
 // Called before render is available
-bool ModuleRenderer3D::Init()
+bool ModuleRenderer3D::Init(json file)
 {
 	LOG("Creating 3D Renderer context");
 	bool ret = true;
@@ -136,7 +136,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {	
-
+	App->imp->Draw();
 	App->gui->Draw();
 	
 	SDL_GL_MakeCurrent(App->window->window, context);

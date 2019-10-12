@@ -11,7 +11,7 @@
 #include "ModuleCamera3D.h"
 #include "ModuleScene.h"
 #include "ModuleGui.h"
-
+#include "ModuleImporter.h"
 #include <list>
 
 #define HISTOGRAM_BARS 100
@@ -24,6 +24,7 @@ public:
 	ModuleAudio* audio;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
+	ModuleImporter* imp;
 
 	ModuleScene* scene;
 	ModuleGui* gui;
