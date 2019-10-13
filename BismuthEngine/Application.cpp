@@ -24,15 +24,7 @@ Application::Application(){
 	
 	// Scenes
 	AddModule(scene);
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
 
-	AddModule(gui);
->>>>>>> parent of c7a45f4... Importer finished
-
->>>>>>> parent of c7a45f4... Importer finished
 	AddModule(gui);
 	AddModule(imp);
 	// Renderer last!

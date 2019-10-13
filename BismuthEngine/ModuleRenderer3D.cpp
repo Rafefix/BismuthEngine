@@ -136,15 +136,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {	
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of c7a45f4... Importer finished
 
-	App->gui->Draw();
->>>>>>> parent of c7a45f4... Importer finished
-	
 	App->gui->Draw();
 	App->imp->Draw();
 

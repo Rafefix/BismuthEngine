@@ -11,7 +11,7 @@
 #include "ModuleCamera3D.h"
 #include "ModuleScene.h"
 #include "ModuleGui.h"
-
+#include "ModuleImporter.h"
 #include <list>
 
 #define HISTOGRAM_BARS 100
@@ -19,23 +19,14 @@
 class Application
 {
 public:
-<<<<<<< HEAD
+
 	ModuleWindow* window = nullptr;
 	ModuleInput* input = nullptr;
 	ModuleAudio* audio = nullptr;
 	ModuleRenderer3D* renderer3D = nullptr;
 	ModuleCamera3D* camera = nullptr;
 	ModuleImporter* imp = nullptr;
-=======
-	ModuleWindow* window;
-	ModuleInput* input;
-	ModuleAudio* audio;
-	ModuleRenderer3D* renderer3D;
-	ModuleCamera3D* camera;
-<<<<<<< HEAD
->>>>>>> parent of c7a45f4... Importer finished
-=======
->>>>>>> parent of c7a45f4... Importer finished
+
 
 	ModuleScene* scene = nullptr;
 	ModuleGui* gui = nullptr;
