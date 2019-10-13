@@ -24,8 +24,9 @@ Application::Application(){
 	
 	// Scenes
 	AddModule(scene);
+
 	AddModule(gui);
-	AddModule(imp);
+
 	// Renderer last!
 	AddModule(renderer3D);
 }
@@ -44,12 +45,11 @@ bool Application::Init(){
 	bool ret = true;
 
 	// Call Init() in all modules
-	json file = jsonLoader.Load("File.json");
 	std::list<Module*>::iterator item = modules.begin();
-	
+
 	while(item != modules.end() && ret == true)
 	{
-		ret = (*item)->Init(file);
+		ret = (*item)->Init();
 		item = next(item);
 	}
 

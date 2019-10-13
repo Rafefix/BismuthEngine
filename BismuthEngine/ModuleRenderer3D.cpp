@@ -138,8 +138,7 @@ update_status ModuleRenderer3D::PostUpdate(float dt)
 {	
 
 	App->gui->Draw();
-	App->imp->Draw();
-
+	
 	SDL_GL_MakeCurrent(App->window->window, context);
 	SDL_GL_SwapWindow(App->window->window);
 

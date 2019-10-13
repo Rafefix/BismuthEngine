@@ -3,8 +3,6 @@
 
 #include "Globals.h"
 #include "Module.h"
-#include "Math.h"
-#include "glmath.h"
 
 class ModuleImporter : public Module
 {
@@ -13,22 +11,14 @@ public:
 	~ModuleImporter();
 
 public:
-	bool Init(json file);
+	bool Init();
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
-	bool LoadFile(const char* path);
-	void Draw();
-	
-private:
 
-	vec3* Vertices = nullptr;
-	uint* Indices = nullptr;
-	uint VerticesID = 0; 
-	uint verticesSize = 0;
-	uint IndicesID = 0; 
-	uint IndicesSize = 0;
 
+
+public:
 };
 
 
