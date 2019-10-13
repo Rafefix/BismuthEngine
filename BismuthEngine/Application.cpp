@@ -24,7 +24,6 @@ Application::Application(){
 	
 	// Scenes
 	AddModule(scene);
-
 	AddModule(gui);
 	AddModule(imp);
 	// Renderer last!

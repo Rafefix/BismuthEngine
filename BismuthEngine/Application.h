@@ -11,7 +11,6 @@
 #include "ModuleCamera3D.h"
 #include "ModuleScene.h"
 #include "ModuleGui.h"
-#include "ModuleImporter.h"
 #include <list>
 
 #define HISTOGRAM_BARS 100
