@@ -32,6 +32,9 @@ public:
 	ModuleAudio* audio;
 	ModuleRenderer3D* renderer3D;
 	ModuleCamera3D* camera;
+<<<<<<< HEAD
+>>>>>>> parent of c7a45f4... Importer finished
+=======
 >>>>>>> parent of c7a45f4... Importer finished
 
 	ModuleScene* scene = nullptr;
