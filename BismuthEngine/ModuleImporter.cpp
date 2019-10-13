@@ -14,7 +14,8 @@
 ModuleImporter::ModuleImporter(Application * app, bool start_enabled) : Module(app, start_enabled) {}
 
 ModuleImporter::~ModuleImporter() {}
-void MyAssimpCallback(const char * msg, char * userData)
+
+void Callback(const char * msg, char * userData)
 {
 	LOG("[Assimp]: %s", msg);
 }
@@ -22,14 +23,14 @@ void MyAssimpCallback(const char * msg, char * userData)
 bool ModuleImporter::Init(json file) {
 
 	struct aiLogStream stream;
-	stream.callback = MyAssimpCallback;
+	stream.callback = Callback;
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
 	aiAttachLogStream(&stream);
 
 	return true;
 }
 
-bool ModuleImporter::Start() { LoadFile("Assets/Baker_house.fbx"); return true; }
+bool ModuleImporter::Start() { LoadFile("Assets/BakerHouse.fbx"); return true; }
 
 update_status ModuleImporter::Update(float dt) { return UPDATE_CONTINUE; }
 
@@ -43,7 +44,6 @@ bool ModuleImporter::CleanUp() {
 	RELEASE_ARRAY(Vertices);
 	RELEASE_ARRAY(Indices);
 
-	return true;
 	return true;
 }
 

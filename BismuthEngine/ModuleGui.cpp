@@ -34,7 +34,7 @@ ModuleGui::~ModuleGui()
 {}
 
 // Called before render is available
-bool ModuleGui::Init()
+bool ModuleGui::Init(json file)
 {
 	LOG("Loading GUI atlas");
 	windowbase = new WindowBase(true);
