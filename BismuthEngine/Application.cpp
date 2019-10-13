@@ -9,7 +9,7 @@ Application::Application(){
 	camera = new ModuleCamera3D(this);
 	scene = new ModuleScene(this);
 	gui = new ModuleGui(this);
-	imp = new ModuleImporter(this);
+
 	// The order of calls is very important!
 	// Modules will Init() Start() and Update in this order
 	// They will CleanUp() in reverse order
@@ -19,11 +19,15 @@ Application::Application(){
 	AddModule(camera);
 	AddModule(input);
 	AddModule(audio);
-
+	
 	
 	
 	// Scenes
 	AddModule(scene);
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of c7a45f4... Importer finished
 	AddModule(gui);
 	AddModule(imp);
 	// Renderer last!
