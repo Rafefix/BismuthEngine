@@ -4,7 +4,6 @@ Application::Application(){
 
 	window = new ModuleWindow(this);
 	input = new ModuleInput(this);
-	audio = new ModuleAudio(this, true);
 	renderer3D = new ModuleRenderer3D(this);
 	camera = new ModuleCamera3D(this);
 	scene = new ModuleScene(this);
@@ -18,7 +17,7 @@ Application::Application(){
 	AddModule(window);
 	AddModule(camera);
 	AddModule(input);
-	AddModule(audio);
+
 	
 	
 	
@@ -46,10 +45,10 @@ bool Application::Init(){
 
 	// Call Init() in all modules
 	std::list<Module*>::iterator item = modules.begin();
-
+	json config = Loader.Load("Configuration.json");
 	while(item != modules.end() && ret == true)
 	{
-		ret = (*item)->Init();
+		ret = (*item)->Init(config);
 		item = next(item);
 	}
 

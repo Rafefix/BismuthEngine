@@ -21,7 +21,7 @@ bool ModuleImporter::CleanUp()
 	return true;
 }
 
-bool ModuleImporter::Init()
+bool ModuleImporter::Init(json file)
 {
 	return true;
 }

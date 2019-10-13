@@ -11,7 +11,7 @@ public:
 	~ModuleImporter();
 
 public:
-	bool Init();
+	bool Init(json file);
 	bool Start();
 	update_status Update(float dt);
 	bool CleanUp();
