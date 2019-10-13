@@ -59,7 +59,8 @@ public:
 	
 
 private:
-
+	void LoadAllConfig(json &file);
+	void SaveAllConfig();
 	void AddModule(Module* mod);
 	void PrepareUpdate();
 	void FinishUpdate();

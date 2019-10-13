@@ -52,4 +52,9 @@ public:
 
 	virtual void OnCollision(PhysBody3D* body1, PhysBody3D* body2)
 	{}
+
+
+	virtual void SaveConfig(json &file) const {}
+
+	virtual void LoadConfig(const json &file) {}
 };

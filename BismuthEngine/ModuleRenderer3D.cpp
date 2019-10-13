@@ -136,7 +136,7 @@ update_status ModuleRenderer3D::PreUpdate(float dt)
 // PostUpdate present buffer to screen
 update_status ModuleRenderer3D::PostUpdate(float dt)
 {	
-
+	App->importer->Draw();
 	App->gui->Draw();
 	
 	SDL_GL_MakeCurrent(App->window->window, context);

@@ -23,7 +23,7 @@ Application::Application(){
 	
 	// Scenes
 	AddModule(scene);
-
+	AddModule(importer);
 	AddModule(gui);
 
 	// Renderer last!
@@ -150,6 +150,37 @@ update_status Application::Update(){
 
 	FinishUpdate();
 	return ret;
+}
+
+void Application::LoadAllConfig(json &file)
+{
+	json config = Loader.Load("Configuration.json");
+	std::list<Module*>::iterator item = modules.begin();
+	while (item != modules.end())
+	{
+		(*item)->LoadConfig(config);
+		item = next(item);
+	}
+
+}
+
+void Application::SaveAllConfig()
+{
+	json config = {
+		{"Application",
+			{
+				{"Title", "Bismuth Engine"}
+			}
+		}
+	};
+	std::list<Module*>::iterator item = modules.begin();
+	while (item != modules.end())
+	{
+		(*item)->SaveConfig(config);
+		item = next(item);
+	}
+
+	Loader.Save("Configuration.json", config);
 }
 
 bool Application::CleanUp(){

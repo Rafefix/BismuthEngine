@@ -132,8 +132,8 @@ update_status ModuleScene::Update(float dt)
 //	createSquare();
 	//createSquareElements();
 
-	shape->Draw();
-	shape2->Draw();
+	//shape->Draw();
+//	shape2->Draw();
 	createfloor();
 	return UPDATE_CONTINUE;
 }
