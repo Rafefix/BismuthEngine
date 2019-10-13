@@ -3,6 +3,8 @@
 
 #include "Globals.h"
 #include "Module.h"
+#include "Math.h"
+#include "glmath.h"
 
 class ModuleImporter : public Module
 {
@@ -18,7 +20,8 @@ public:
 	bool LoadFile(const char* path);
 	void Draw();
 	
-public:
+private:
+
 	vec3* Vertices = nullptr;
 	uint* Indices = nullptr;
 	uint VerticesID = 0; 

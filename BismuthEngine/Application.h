@@ -19,15 +19,15 @@
 class Application
 {
 public:
-	ModuleWindow* window;
-	ModuleInput* input;
-	ModuleAudio* audio;
-	ModuleRenderer3D* renderer3D;
-	ModuleCamera3D* camera;
-	ModuleImporter* imp;
+	ModuleWindow* window = nullptr;
+	ModuleInput* input = nullptr;
+	ModuleAudio* audio = nullptr;
+	ModuleRenderer3D* renderer3D = nullptr;
+	ModuleCamera3D* camera = nullptr;
+	ModuleImporter* imp = nullptr;
 
-	ModuleScene* scene;
-	ModuleGui* gui;
+	ModuleScene* scene = nullptr;
+	ModuleGui* gui = nullptr;
 
 	std::vector<float> fps_vec;
 	std::vector<float> ms_vec;
@@ -46,6 +46,7 @@ private:
 	Timer					last_sec_frame_time;
 
 	float	dt;
+	JsonLoader jsonLoader;
 
 	std::list<Module*> modules;
 

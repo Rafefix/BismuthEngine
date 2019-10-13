@@ -40,6 +40,7 @@ typedef unsigned int uint;
 	       x = nullptr;\
 		 }\
 	}
+
 enum update_status
 {
 	UPDATE_CONTINUE = 1,

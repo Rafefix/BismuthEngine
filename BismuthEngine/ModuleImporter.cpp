@@ -15,16 +15,22 @@ ModuleImporter::ModuleImporter(Application * app, bool start_enabled) : Module(a
 
 ModuleImporter::~ModuleImporter(){}
 
+void MyAssimpCallback(const char * msg, char * userData)
+{
+	LOG("[Assimp]: %s", msg);
+}
+
 bool ModuleImporter::Init(json file) {
 
 	struct aiLogStream stream;
+	stream.callback = MyAssimpCallback;
 	stream = aiGetPredefinedLogStream(aiDefaultLogStream_DEBUGGER, nullptr);
 	aiAttachLogStream(&stream);
 
 	return true;
 }
 
-bool ModuleImporter::Start() {return true;}
+bool ModuleImporter::Start() { LoadFile("Assets/BakerHouse.fbx");  return true;}
 
 update_status ModuleImporter::Update(float dt) {return UPDATE_CONTINUE;}
 
@@ -39,9 +45,7 @@ bool ModuleImporter::CleanUp(){
 	RELEASE_ARRAY(Indices);
 
 	return true;
-	return true;
 }
-
 
 
 void ModuleImporter::Draw() {
@@ -102,9 +106,8 @@ bool ModuleImporter::LoadFile(const char* path) {
 
 		aiReleaseImport(scene);
 
-
 	}
-	
+	return true;
 }
 
 
