@@ -6,7 +6,7 @@
 #include "Math.h"
 #include "glmath.h"
 
-
+class Meshes;
 
 class ModuleImporter : public Module
 {
@@ -17,19 +17,13 @@ public:
 public:
 	bool Init(json file);
 	bool Start();
-	update_status Update(float dt);
 	bool CleanUp();
 	bool LoadFile(const char* path);
 	void Draw();
 
 public:
-	vec3* Vertices = nullptr;
-	uint* Indices = nullptr;
-	uint VerticesID = 0;
-	uint verticesSize = 0;
-	uint IndicesID = 0;
-	uint IndicesSize = 0;
-
+	std::vector<Meshes*> meshes;
+	
 };
 
 

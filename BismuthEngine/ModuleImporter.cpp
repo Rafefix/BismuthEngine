@@ -1,6 +1,7 @@
 #include "ModuleImporter.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
+#include "NewMesh.h"
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
@@ -32,83 +33,83 @@ bool ModuleImporter::Init(json file) {
 
 bool ModuleImporter::Start() { LoadFile("Assets/BakerHouse.fbx"); return true; }
 
-update_status ModuleImporter::Update(float dt) { return UPDATE_CONTINUE; }
 
-bool ModuleImporter::CleanUp() {
 
+bool ModuleImporter::CleanUp()
+{
+	// detach log stream
 	aiDetachAllLogStreams();
-
-	glDeleteBuffers(1, (GLuint*)&VerticesID);
-	glDeleteBuffers(1, (GLuint*)&IndicesID);
-
-	RELEASE_ARRAY(Vertices);
-	RELEASE_ARRAY(Indices);
+	for (uint i = 0; i < meshes.size(); ++i)
+	{
+		glDeleteBuffers(1, (GLuint*)&meshes[i]->VerticesID);
+		glDeleteBuffers(1, (GLuint*)&meshes[i]->IndicesID);
+		RELEASE_ARRAY(meshes[i]->Vertices);
+		RELEASE_ARRAY(meshes[i]->Indices);
+		delete meshes[i];
+	}
 
 	return true;
 }
 
+void ModuleImporter::Draw()
+{
 
+	for (uint i = 0; i < meshes.size(); ++i)
+	{
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glBindBuffer(GL_ARRAY_BUFFER, meshes[i]->VerticesID);
+		glVertexPointer(3, GL_FLOAT, 0, NULL);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshes[i]->IndicesID);
+		glDrawElements(GL_TRIANGLES, meshes[i]->IndicesSize, GL_UNSIGNED_INT, NULL);
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glDisableClientState(GL_VERTEX_ARRAY);
 
-void ModuleImporter::Draw() {
+		if (meshes[i]->TexCoords)
+		{
+			glEnable(GL_TEXTURE_2D);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshes[i]->TexID);
+			glDrawArrays(GL_TEXTURE_2D, 0, meshes[i]->TexCoordsSize);
+			glDisable(GL_TEXTURE_2D);
 
+		}
 
-	glEnableClientState(GL_VERTEX_ARRAY);
+		if (meshes[i]->Normals)
+		{
+			glBegin(GL_LINES);
+			glLineWidth(1.0f);
+			uint Normal_length = 1;
+			glColor4f(0.0f, 0.5f, 0.5f, 1.0f);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VerticesID);
-	glVertexPointer(3, GL_FLOAT, 0, NULL);
+			for (uint j = 0; j < meshes[i]->VerticesSize; ++j)
+			{
+				glVertex3f(meshes[i]->Vertices[j].x, meshes[i]->Vertices[j].y, meshes[i]->Vertices[j].z);
+				glVertex3f(meshes[i]->Vertices[j].x + meshes[i]->Normals[j].x*Normal_length, meshes[i]->Vertices[j].y + meshes[i]->Normals[j].y*Normal_length, meshes[i]->Vertices[j].z + meshes[i]->Normals[j].z*Normal_length);
+			}
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndicesID);
-	glDrawElements(GL_TRIANGLES, IndicesSize, GL_UNSIGNED_INT, NULL);
+			glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+			glEnd();
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	glDisableClientState(GL_VERTEX_ARRAY);
+		}
+	}
 }
 
-bool ModuleImporter::LoadFile(const char* path) {
-
+bool ModuleImporter::LoadFile(const char* path)
+{
 	const aiScene* scene = aiImportFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
 
-	if (scene != nullptr && scene->HasMeshes()) {
-
-		for (uint i = 0; i < scene->mNumMeshes; ++i) {}
-
-		aiMesh* mesh = scene->mMeshes[0];
-		verticesSize = mesh->mNumVertices;
-		Vertices = new vec3[mesh->mNumVertices];
-
-		for (unsigned i = 0; i < mesh->mNumVertices; ++i) {
-
-			Vertices[i] = *((vec3*)&mesh->mVertices[i]);
+	if (scene != nullptr && scene->HasMeshes())
+	{
+		for (uint i = 0; i < scene->mNumMeshes; ++i)
+		{
+			Meshes* mesh_aux = new Meshes;
+			meshes.push_back(mesh_aux);
+			aiMesh* mesh = scene->mMeshes[i];
+			mesh_aux->Importer(mesh);
 		}
-
-		glGenBuffers(1, (GLuint*)&VerticesID);
-		glBindBuffer(GL_ARRAY_BUFFER, VerticesID);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vec3) * verticesSize, Vertices, GL_STATIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-		IndicesSize = mesh->mNumFaces * 3;
-		Indices = new uint[IndicesSize];
-
-		for (unsigned j = 0; j < mesh->mNumFaces; ++j) {
-
-			const aiFace& face = mesh->mFaces[j];
-
-			assert(face.mNumIndices == 3);
-
-			Indices[j * 3] = face.mIndices[0];
-			Indices[j * 3 + 1] = face.mIndices[1];
-			Indices[j * 3 + 2] = face.mIndices[2];
-		}
-		glGenBuffers(1, (GLuint*)&IndicesID);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndicesID);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(uint) * IndicesSize, Indices, GL_STATIC_DRAW);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
 		aiReleaseImport(scene);
-
-
 	}
+	else { LOG("|[error]: Error loading scene %s", path); }
+
 	return true;
 }

@@ -144,6 +144,12 @@
     <ClInclude Include="JsonLoader.h">
       <Filter>Sources\json</Filter>
     </ClInclude>
+    <ClInclude Include="NewMesh.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>Sources\Tools</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -229,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="JsonLoader.cpp">
       <Filter>Sources\json</Filter>
+    </ClCompile>
+    <ClCompile Include="NewMesh.cpp">
+      <Filter>Sources\Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Base.cpp">
+      <Filter>Sources\Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
