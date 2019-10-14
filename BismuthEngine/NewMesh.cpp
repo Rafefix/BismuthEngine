@@ -11,10 +11,11 @@
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
 Meshes::Meshes() : Resources(Resources::RType::mesh) {}
+
 Meshes::~Meshes() {}
 
-void Meshes::Importer(aiMesh* mesh)
-{
+void Meshes::Importer(aiMesh* mesh){
+
 	this->VerticesSize = mesh->mNumVertices;
 	this->Vertices = new vec3[mesh->mNumVertices];
 
@@ -26,15 +27,15 @@ void Meshes::Importer(aiMesh* mesh)
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 
-	if (mesh->HasNormals())
-	{
+	if (mesh->HasNormals()){
+
 		NormalsSize = mesh->mNumVertices;
 		Normals = new vec3[NormalsSize];
 		memcpy(Normals, mesh->mNormals, sizeof(vec3)*NormalsSize);
 	}
 
-	if (mesh->HasTextureCoords(0))
-	{
+	if (mesh->HasTextureCoords(0)){
+
 		TexCoordsSize = mesh->mNumVertices;
 		TexCoords = new vec2[TexCoordsSize];
 		for (unsigned i = 0; i < TexCoordsSize; ++i) { TexCoords[i] = vec2(mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y); }
@@ -42,11 +43,10 @@ void Meshes::Importer(aiMesh* mesh)
 
 	glGenTextures(1, (GLuint*)&this->TexID);
 	glBindTexture(GL_TEXTURE_2D, this->TexID);
-	//glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,sizeof(vec3)*TexCoordsSize,0,GL_RGBA, GL_UNSIGNED_BYTE,); // send vertices to VRAM
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	if (mesh->HasVertexColors(0))
-	{
+	if (mesh->HasVertexColors(0)){
+
 		ColoursSize = VerticesSize;
 		Colours = new unsigned char[ColoursSize * 4];
 		memcpy(Colours, mesh->mColors, sizeof(unsigned char)*ColoursSize * 4);
@@ -55,8 +55,8 @@ void Meshes::Importer(aiMesh* mesh)
 	this->IndicesSize = mesh->mNumFaces * 3;
 	this->Indices = new uint[this->IndicesSize];
 
-	for (unsigned j = 0; j < mesh->mNumFaces; ++j)
-	{
+	for (unsigned j = 0; j < mesh->mNumFaces; ++j){
+
 		const aiFace& face = mesh->mFaces[j];
 		assert(face.mNumIndices == 3);
 		this->Indices[j * 3] = face.mIndices[0];

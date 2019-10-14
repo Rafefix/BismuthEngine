@@ -11,6 +11,9 @@
 #include  "Assimp/include/postprocess.h"
 #include  "Assimp/include/cfileio.h"
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
+#include "DevIL/include/IL/il.h"
+#include "DevIL/include/IL/ilut.h"
+#include "DevIL/include/IL/ilu.h"
 
 ModuleImporter::ModuleImporter(Application * app, bool start_enabled) : Module(app, start_enabled) {}
 
