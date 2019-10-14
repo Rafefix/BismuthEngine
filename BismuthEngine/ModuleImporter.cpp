@@ -31,7 +31,7 @@ bool ModuleImporter::Init(json file) {
 	return true;
 }
 
-bool ModuleImporter::Start() { LoadFile("Assets/BakerHouse.fbx"); return true; }
+bool ModuleImporter::Start() { return true; }
 
 
 

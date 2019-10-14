@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "ModuleScene.h"
 #include "NewPrimitives.h"
+#include "ModuleImporter.h"
 #include "ModuleRenderer3D.h"
 #include "math.h"
 
@@ -131,7 +132,6 @@ update_status ModuleScene::Update(float dt)
 	//directcube();
 //	createSquare();
 	//createSquareElements();
-
 	//shape->Draw();
 //	shape2->Draw();
 	createfloor();
