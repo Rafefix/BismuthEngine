@@ -117,7 +117,18 @@ update_status ModuleInput::PreUpdate(float dt)
 
 			case SDL_DROPFILE:
 
-				if (e.drop.type == SDL_DROPFILE)
+				if (e.drop.type == SDL_DROPFILE) {
+					if (strstr(e.drop.file, ".png") != nullptr) {
+						//App->importer->tex = App->importer->LoadTexture(e.drop.file); LATER
+					}
+					
+					else if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){
+						App->importer->LoadFile(e.drop.file);
+					} 
+						
+					// Free dropped_filedir memory
+					SDL_free((void*)e.drop.file);
+				}
 					App->importer->LoadFile(e.drop.file);
 		}
 	}

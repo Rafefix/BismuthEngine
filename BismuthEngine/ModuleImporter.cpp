@@ -2,18 +2,25 @@
 #include "Application.h"
 #include "ModuleRenderer3D.h"
 #include "NewMesh.h"
+
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
+
 #include "Assimp/include/cimport.h"
 #include "Assimp/include/scene.h"
 #include  "Assimp/include/postprocess.h"
 #include  "Assimp/include/cfileio.h"
-#pragma comment (lib, "Assimp/libx86/assimp.lib")
+
 #include "DevIL/include/IL/il.h"
 #include "DevIL/include/IL/ilut.h"
 #include "DevIL/include/IL/ilu.h"
+
+#pragma comment (lib, "Assimp/libx86/assimp.lib")
+#pragma comment( lib, "Devil/lib/x86/Release/DevIL.lib" )
+#pragma comment( lib, "Devil/lib/x86/Release/ILU.lib" )
+#pragma comment( lib, "Devil/lib/x86/Release/ILUT.lib" )
 
 ModuleImporter::ModuleImporter(Application * app, bool start_enabled) : Module(app, start_enabled) {}
 
@@ -34,7 +41,15 @@ bool ModuleImporter::Init(json file) {
 	return true;
 }
 
-bool ModuleImporter::Start() { return true; }
+bool ModuleImporter::Start() { 
+	
+	
+	glEnable(GL_TEXTURE_2D);
+
+	LoadTexture("Assets/Baker_house.png");
+
+	return true;
+}
 
 
 
@@ -60,12 +75,16 @@ void ModuleImporter::Draw()
 	for (uint i = 0; i < meshes.size(); ++i)
 	{
 		glEnableClientState(GL_VERTEX_ARRAY);
+
+		glBindTexture(GL_TEXTURE_2D, tex);
 		glBindBuffer(GL_ARRAY_BUFFER, meshes[i]->VerticesID);
 		glVertexPointer(3, GL_FLOAT, 0, NULL);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, meshes[i]->IndicesID);
 		glDrawElements(GL_TRIANGLES, meshes[i]->IndicesSize, GL_UNSIGNED_INT, NULL);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
 		glDisableClientState(GL_VERTEX_ARRAY);
 
 		if (meshes[i]->TexCoords)
@@ -115,4 +134,40 @@ bool ModuleImporter::LoadFile(const char* path)
 	else { LOG("|[error]: Error loading scene %s", path); }
 
 	return true;
+}
+
+
+void ModuleImporter::LoadTexture(const char* path)
+{
+	ILuint image;
+	ilGenImages(1, &image);
+	ilBindImage(image);
+
+	if (!ilLoadImage(path))
+		ilDeleteImages(1, &image);
+	else {
+
+		tex = ilutGLBindTexImage();
+
+		long h, v, bpp, f;
+		ILubyte *texdata = 0;
+
+		h = ilGetInteger(IL_IMAGE_WIDTH);
+		v = ilGetInteger(IL_IMAGE_HEIGHT);
+		bpp = ilGetInteger(IL_IMAGE_BYTES_PER_PIXEL);
+		f = ilGetInteger(IL_IMAGE_FORMAT);
+		texdata = ilGetData();
+
+		glGenTextures(1, &tex);
+		glBindTexture(GL_TEXTURE_2D, tex);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		gluBuild2DMipmaps(GL_TEXTURE_2D, bpp, h, v, f, GL_UNSIGNED_BYTE, texdata);
+		glBindTexture(GL_TEXTURE_2D, 0);
+
+		ilBindImage(0);
+		ilDeleteImage(image);
+	}
 }

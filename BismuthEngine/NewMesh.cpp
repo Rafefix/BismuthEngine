@@ -1,4 +1,7 @@
 #include "NewMesh.h"
+#include "ModuleImporter.h"
+#include "Globals.h"
+#include "Application.h"
 #include "glmath.h"
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
@@ -10,7 +13,7 @@
 #include  "Assimp/include/cfileio.h"
 #pragma comment (lib, "Assimp/libx86/assimp.lib")
 
-Meshes::Meshes() : Resources(Resources::RType::mesh) {}
+Meshes::Meshes() {}
 
 Meshes::~Meshes() {}
 

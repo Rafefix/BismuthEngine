@@ -57,3 +57,5 @@ enum update_status
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
 #define TITLE "Bismuth Engine"
+#define CHECKERS_WIDTH 10
+#define CHECKERS_HEIGHT 10

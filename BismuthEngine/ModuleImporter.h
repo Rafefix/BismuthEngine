@@ -19,10 +19,12 @@ public:
 	bool Start();
 	bool CleanUp();
 	bool LoadFile(const char* path);
+	void LoadTexture(const char* path);
 	void Draw();
 
 public:
 	std::vector<Meshes*> meshes;
+	uint tex = 0;
 	
 };
 

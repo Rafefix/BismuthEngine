@@ -8,8 +8,8 @@
 
 struct aiMesh;
 
-class Meshes : public Resources
-{
+class Meshes{
+
 public:
 
 	Meshes();
