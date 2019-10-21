@@ -143,9 +143,9 @@ void ModuleImporter::LoadTexture(const char* path)
 	ilGenImages(1, &image);
 	ilBindImage(image);
 
-	if (!ilLoadImage(path))
-		ilDeleteImages(1, &image);
-	else {
+	if (!ilLoadImage(path)) { 
+		ilDeleteImages(1, &image); 
+	}else {
 
 		tex = ilutGLBindTexImage();
 
