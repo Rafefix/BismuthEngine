@@ -37,6 +37,9 @@
     <Filter Include="Sources\json">
       <UniqueIdentifier>{f0093530-27eb-430b-be3b-33f0197b12a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Tools\things to delete">
+      <UniqueIdentifier>{8527b25b-c25c-4c8b-8566-7dd0e14cee3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -144,11 +147,11 @@
     <ClInclude Include="JsonLoader.h">
       <Filter>Sources\json</Filter>
     </ClInclude>
-    <ClInclude Include="NewMesh.h">
-      <Filter>Sources\Tools</Filter>
-    </ClInclude>
     <ClInclude Include="Base.h">
-      <Filter>Sources\Tools</Filter>
+      <Filter>Sources\Tools\things to delete</Filter>
+    </ClInclude>
+    <ClInclude Include="NewMesh.h">
+      <Filter>Sources\Tools\things to delete</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,11 +239,11 @@
     <ClCompile Include="JsonLoader.cpp">
       <Filter>Sources\json</Filter>
     </ClCompile>
-    <ClCompile Include="NewMesh.cpp">
-      <Filter>Sources\Tools</Filter>
-    </ClCompile>
     <ClCompile Include="Base.cpp">
-      <Filter>Sources\Tools</Filter>
+      <Filter>Sources\Tools\things to delete</Filter>
+    </ClCompile>
+    <ClCompile Include="NewMesh.cpp">
+      <Filter>Sources\Tools\things to delete</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -119,17 +119,17 @@ update_status ModuleInput::PreUpdate(float dt)
 
 				if (e.drop.type == SDL_DROPFILE) {
 					if (strstr(e.drop.file, ".png") != nullptr) {
-						//App->importer->tex = App->importer->LoadTexture(e.drop.file); LATER
+						App->importer->texture = App->importer->GetTexture(e.drop.file);
 					}
 					
-					else if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){
+					if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){
 						App->importer->LoadFile(e.drop.file);
 					} 
 						
 					// Free dropped_filedir memory
 					SDL_free((void*)e.drop.file);
 				}
-					App->importer->LoadFile(e.drop.file);
+					
 		}
 	}
 

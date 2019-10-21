@@ -1,31 +1,50 @@
 #ifndef __MODULEIMPORTER_H__
 #define __MODULEIMPORTER_H__
 
-#include "Globals.h"
 #include "Module.h"
-#include "Math.h"
-#include "glmath.h"
+#include <vector>
 
-class Meshes;
+struct MeshIndexes {
 
+	uint id_index = 0;
+	uint num_indices = 0;
+	uint* indices = nullptr;
+	uint id_vertex = 0;
+	uint num_vertices = 0;
+	float* vertices = nullptr;
+	uint id_texture = 0;
+	uint num_texture = 0;
+	float* textures = nullptr;
+};
+
+struct Mesh {
+
+	std::vector<MeshIndexes*> mesh;
+	uint texture = 0;
+};
+
+// ---------------------------------------------------
 class ModuleImporter : public Module
 {
 public:
+
 	ModuleImporter(Application* app, bool start_enabled = true);
-	~ModuleImporter();
+	virtual ~ModuleImporter();
 
-public:
-	bool Init(json file);
+	bool Init();
 	bool Start();
+	update_status Update(float dt);
 	bool CleanUp();
-	bool LoadFile(const char* path);
-	void LoadTexture(const char* path);
-	void Draw();
+
+	void LoadFile(const char* path, uint tex = 0);
+	void Draw(Mesh fbx_mesh);
+	uint GetTexture(const char* path);
 
 public:
-	std::vector<Meshes*> meshes;
-	uint tex = 0;
-	
+
+	std::vector<Mesh> MeshArray;
+	uint texture;
+
 };
 
 
