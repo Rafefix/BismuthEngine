@@ -5,11 +5,15 @@
 #include "NewPrimitives.h"
 #include <vector>
 
+#include "glew/include/GL/glew.h"
+
+#include <gl/GL.h>
+#include <gl/GLU.h>
 
 
 #define MAX_SNAKE 8
 
-struct PhysBody3D;
+
 class Primitives;
 
 class ModuleScene : public Module
@@ -25,15 +29,14 @@ public:
 	
 
 
-public:
-	Primitives* shape;
-	Primitives* shape2;
 
 public:
 	void createSquare();
 	void createSquareElements();
 	void createfloor();
-	
+	Primitives* createShape(SHAPE type, vec3 &position, vec3 &size);
+public:
+	std::list<Primitives*> objectList;
 
 };
 

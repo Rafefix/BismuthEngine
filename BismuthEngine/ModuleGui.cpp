@@ -5,6 +5,7 @@
 #include "ModuleWindow.h"
 #include "GuiConfig.h"
 #include "GuiAbout.h"
+#include "Gui3DObj.h"
 #include "GuiConsole.h"
 #include "WindowBase.h"
 #include <stdio.h>
@@ -41,13 +42,13 @@ bool ModuleGui::Init(json file)
 	config = new GuiConfig(false);
 	about = new GuiAbout(false);
 	console = new GuiConsole(false);
-
+	obj = new Gui3DOBJ(false);
 
 	AddGuiElement(windowbase);
 	AddGuiElement(config);
 	AddGuiElement(about);
 	AddGuiElement(console);
-
+	AddGuiElement(obj);
 	return true;
 }
 
@@ -112,11 +113,11 @@ update_status ModuleGui::Update(float dt)
 			}
 
 			if (ImGui::MenuItem("Save", "Ctrl+S")) {
-				ret = UPDATE_STOP;
+				
 			}
 
 			if (ImGui::MenuItem("Quit", "Alt+F4")) {
-				ret = UPDATE_STOP;
+				
 			}
 				
 
@@ -126,19 +127,19 @@ update_status ModuleGui::Update(float dt)
 		if (ImGui::BeginMenu("Edit")){
 
 			if (ImGui::MenuItem("Undo", "Ctrl+Z")) {
-				ret = UPDATE_STOP;
+				
 			}
 			if (ImGui::MenuItem("Redo", "Ctrl+Y")) {
-				ret = UPDATE_STOP;
+				
 			}
 			if (ImGui::MenuItem("Copy", "Ctrl+C")) {
-				ret = UPDATE_STOP;
+				
 			}
 			if (ImGui::MenuItem("Paste", "Ctrl+V")) {
-				ret = UPDATE_STOP;
+				
 			}
 			if (ImGui::MenuItem("Cut", "Ctrl+X")) {
-				ret = UPDATE_STOP;
+				
 			}
 
 			
@@ -147,10 +148,21 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
+		if (ImGui::BeginMenu("3D Objects")) {
+
+			if (ImGui::MenuItem("Create 3D Object")) {
+				obj->visible = !obj->visible;
+			}
+				
+			ImGui::EndMenu();
+		}
+
 		if (ImGui::BeginMenu("Window")){
 
-			if (ImGui::Checkbox("Console", &show_console))
+			if (ImGui::Checkbox("Console", &show_console)) {
 				console->visible = !console->visible;
+			}
+				
 			ImGui::EndMenu();
 		}
 

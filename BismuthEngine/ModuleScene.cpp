@@ -111,8 +111,6 @@ bool ModuleScene::Start()
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
-	shape = new Primitives(SHAPE::CYLINDER,vec3(0, 0, 0), vec3(1, -4, 1),1,20,20);
-	shape2 = new Primitives(SHAPE::CUBE, vec3(10, 0, 0), vec3(1, 4, 1));
 
 	return ret;
 }
@@ -121,19 +119,18 @@ bool ModuleScene::Start()
 bool ModuleScene::CleanUp()
 {
 	LOG("Unloading Intro scene");
-
+	objectList.clear();
 	return true;
 }
 
 // Update
 update_status ModuleScene::Update(float dt)
 {
+	for (std::list<Primitives*>::iterator item = objectList.begin(); item != objectList.end(); ++item)
+	{
+		(*item)->Draw();
+	}
 	
-	//directcube();
-//	createSquare();
-	//createSquareElements();
-	//shape->Draw();
-//	shape2->Draw();
 	createfloor();
 	return UPDATE_CONTINUE;
 }
@@ -257,4 +254,51 @@ void ModuleScene::createfloor()
 
 	glEnd();
 
+}
+
+Primitives* ModuleScene::createShape(SHAPE type, vec3 &position, vec3 &size){
+
+	Primitives* ret = nullptr;
+
+	switch (type)
+	{
+	case SHAPE::TETRAHEDRON:
+		ret = new Primitives(SHAPE::TETRAHEDRON, position, size);
+		break;
+	case SHAPE::CUBE:
+		ret = new Primitives(SHAPE::CUBE, position, size);
+		break;
+	case SHAPE::OCTOHEDRON:
+		ret = new Primitives(SHAPE::OCTOHEDRON, position, size);
+		break;
+	case SHAPE::DODECAHEDRON:
+		ret = new Primitives(SHAPE::DODECAHEDRON, position, size);
+		break;
+	case SHAPE::ICOSAHEDRON:
+		ret = new Primitives(SHAPE::ICOSAHEDRON, position, size);
+		break;
+	case SHAPE::SPHERE:
+		ret = new Primitives(SHAPE::SPHERE, position, size);
+		break;
+	case SHAPE::CYLINDER:
+		ret = new Primitives(SHAPE::CYLINDER, position, size);
+		break;
+	case SHAPE::CONE:
+		ret = new Primitives(SHAPE::CONE, position, size);
+		break;
+	case SHAPE::PLANE:
+		ret = new Primitives(SHAPE::PLANE, position, size);
+		break;
+	case SHAPE::TORUS:
+		ret = new Primitives(SHAPE::TORUS, position, size);
+		break;
+	}
+
+	if (ret != nullptr) {
+		objectList.push_back(ret);     
+	}
+		
+	
+
+	return ret;
 }

@@ -153,6 +153,9 @@
     <ClInclude Include="NewMesh.h">
       <Filter>Sources\Tools\things to delete</Filter>
     </ClInclude>
+    <ClInclude Include="Gui3DObj.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="NewMesh.cpp">
       <Filter>Sources\Tools\things to delete</Filter>
+    </ClCompile>
+    <ClCompile Include="Gui3DObj.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

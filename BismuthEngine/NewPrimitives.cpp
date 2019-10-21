@@ -37,10 +37,43 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 		break;
 	
 	case SHAPE::PLANE:
+
 		mesh = par_shapes_create_plane(3, 3);
 		par_shapes_rotate(mesh, -M_PI_2, rotation);
 		break;
+	case SHAPE::TORUS:
+		radius = 0.2f;
+		slices = 20;
+		stacks = 20;
+		mesh = par_shapes_create_torus(slices, stacks, radius);
+		par_shapes_rotate(mesh, -M_PI_2, rotation);
 
+	case SHAPE::CONE:
+		radius = 1.0f;
+		slices = 20;
+		stacks = 10;
+		mesh = par_shapes_create_cone(slices, stacks);
+		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
+		par_shapes_rotate(disk1, -M_PI, rotation);
+		par_shapes_merge(mesh, disk1);
+		par_shapes_free_mesh(disk1);
+		par_shapes_rotate(mesh, -M_PI_2, rotation);
+		break;
+
+	case SHAPE::CYLINDER:
+		radius = 1.0f;
+		slices = 20;
+		stacks = 20;
+		mesh = par_shapes_create_cylinder(slices, stacks);
+		disk2 = par_shapes_create_disk(radius, slices, center, normal);
+		par_shapes_merge(mesh, disk2);
+		par_shapes_free_mesh(disk2);
+		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
+		par_shapes_rotate(disk1, M_PI, rotation);
+		par_shapes_merge(mesh, disk1);
+		par_shapes_free_mesh(disk1);
+		par_shapes_rotate(mesh, M_PI_2, rotation);
+		break;
 	}
 
 	par_shapes_scale(mesh, size.x, size.y, size.z);
@@ -56,11 +89,11 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 
 Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, float slices, float stacks) {
 
-	switch (shape) {
+	/*switch (shape) {
 
-	/*case SHAPE::TORUS:
+	case SHAPE::TORUS:
 		mesh = par_shapes_create_torus(slices, stacks, radius);
-		par_shapes_rotate(mesh, -M_PI_2, rotation);*/
+		par_shapes_rotate(mesh, -M_PI_2, rotation);
 
 	case SHAPE::CONE:
 		
@@ -92,7 +125,7 @@ Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, fl
 	ChangeList(mesh);
 	par_shapes_free_mesh(mesh);
 
-	Bufferer();
+	Bufferer();*/
 }
 
 
