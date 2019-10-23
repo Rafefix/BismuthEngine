@@ -14,7 +14,7 @@
     <ProjectGuid>{746CC4C3-787F-4B0E-AA66-E388FE3FF4F6}</ProjectGuid>
     <RootNamespace>SDLGame</RootNamespace>
     <ProjectName>Bismuth Engine</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -119,7 +119,7 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="par_shapes.h" />
     <ClInclude Include="Timer.h" />
-    <ClInclude Include="WindowBase.h" />
+    <ClInclude Include="GuiGameObjects.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
@@ -152,7 +152,7 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="par_shapes.cpp" />
     <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="WindowBase.cpp" />
+    <ClCompile Include="GuiGameObjects.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

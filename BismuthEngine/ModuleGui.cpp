@@ -7,7 +7,7 @@
 #include "GuiAbout.h"
 #include "Gui3DObj.h"
 #include "GuiConsole.h"
-#include "WindowBase.h"
+#include "GuiGameObjects.h"
 #include <stdio.h>
 
 //#include "json/json.hpp"
@@ -38,13 +38,13 @@ ModuleGui::~ModuleGui()
 bool ModuleGui::Init(json file)
 {
 	LOG("Loading GUI atlas");
-	windowbase = new WindowBase(true);
+	heri = new GameObjects(true);
 	config = new GuiConfig(false);
 	about = new GuiAbout(false);
 	console = new GuiConsole(false);
 	obj = new Gui3DOBJ(false);
 
-	AddGuiElement(windowbase);
+	AddGuiElement(heri);
 	AddGuiElement(config);
 	AddGuiElement(about);
 	AddGuiElement(console);

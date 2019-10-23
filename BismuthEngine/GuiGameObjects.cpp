@@ -1,29 +1,29 @@
-#include "WindowBase.h"
+#include "GuiGameObjects.h"
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "imgui.h"
 
-WindowBase::WindowBase(bool is_visible) : GuiElement(is_visible) {}
+GameObjects::GameObjects(bool is_visible) : GuiElement(is_visible) {}
 
-WindowBase::~WindowBase() {}
+GameObjects::~GameObjects() {}
 
-void WindowBase::Start()
+void GameObjects::Start()
 {
 }
 
-void WindowBase::Draw()
+void GameObjects::Draw()
 {
 	App->window->GetSize(window_width, window_height);
 	ImGui::SetNextWindowPos(ImVec2(0, 18), ImGuiCond_Once);
 	ImGui::SetNextWindowSize(ImVec2((float)window_width / 5, (float)window_height - 18), ImGuiCond_Once);
 
-	if (ImGui::Begin("Windows", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse))
+	if (ImGui::Begin("GameObjects: Heriarchy", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse))
 	{
 
 		ImGui::End();
 	}
 }
 
-void WindowBase::CleanUp()
+void GameObjects::CleanUp()
 {
 }

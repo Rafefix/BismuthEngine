@@ -27,8 +27,8 @@ public:
 	int		window_height = 0;
 	int		width = SCREEN_WIDTH;
 	int		height = SCREEN_HEIGHT;
-	vec3 position=(0, 0, 0);
-	vec3 size= (1, 1, 1);
+//	vec3 position=(0, 0, 0);
+//	vec3 size= (1, 1, 1);
 };
 
 #endif __GUI3DOBJ__H__

@@ -17,7 +17,7 @@ struct _TTF_Font;
 struct SDL_Rect;
 struct SDL_Color; 
 
-class WindowBase;
+class GameObjects;
 class GuiConfig;
 class GuiAbout;
 class GuiConsole;
@@ -72,7 +72,7 @@ private:
 
 	class std::list<GuiElement*> gui_elements;
 
-	WindowBase* windowbase = nullptr;
+	GameObjects* heri = nullptr;
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
 	GuiConsole* console = nullptr;
