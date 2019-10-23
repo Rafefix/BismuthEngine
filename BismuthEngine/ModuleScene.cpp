@@ -249,7 +249,7 @@ void ModuleScene::createfloor()
 	}
 
 
-	
+	glColor4f(255.0f, 255.0f, 255.0f, 1.0f);
 
 
 	glEnd();

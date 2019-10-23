@@ -37,8 +37,14 @@ bool ModuleImporter::Init()
 	return true;
 }
 
-bool ModuleImporter::Start()
-{return true;}
+bool ModuleImporter::Start(){
+	
+	texture = GetTexture("Assets/Baker_house.png");
+	LoadFile("Assets/BakerHouse.fbx");
+	
+	
+	return true;
+}
 
 update_status ModuleImporter::Update(float dt)
 {

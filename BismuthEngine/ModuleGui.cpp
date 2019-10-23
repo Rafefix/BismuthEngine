@@ -148,12 +148,10 @@ update_status ModuleGui::Update(float dt)
 			ImGui::EndMenu();
 		}
 
-		if (ImGui::BeginMenu("3D Objects")) {
-
-			if (ImGui::MenuItem("Create 3D Object")) {
-				obj->visible = !obj->visible;
-			}
-				
+		if (ImGui::BeginMenu("3D Objects")) {			
+		
+			obj->visible = !obj->visible;
+							
 			ImGui::EndMenu();
 		}
 

@@ -27,8 +27,13 @@ public:
 	int		window_height = 0;
 	int		width = SCREEN_WIDTH;
 	int		height = SCREEN_HEIGHT;
-//	vec3 position=(0, 0, 0);
-//	vec3 size= (1, 1, 1);
+	
+	bool	DepthTest = true;
+	bool	CullFace = true;
+	bool	MaterialColor = true;
+	bool	Lighting = true;
+	bool	Texture2D = true;
+
 };
 
 #endif __GUI3DOBJ__H__

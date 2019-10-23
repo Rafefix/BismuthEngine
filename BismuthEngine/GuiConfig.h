@@ -30,11 +30,7 @@ private:
 	bool	resizable = true;
 	bool	borderless = false;
 	bool	fulldesktop = false;
-	bool	DepthTest = true;
-	bool	CullFace = true;
-	bool	MaterialColor = true;
-	bool	Lighting = true;
-	bool	Texture2D = false;
+	
 
 
 	GLint video_mem_budget = 0;

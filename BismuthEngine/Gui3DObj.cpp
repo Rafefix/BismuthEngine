@@ -27,19 +27,8 @@ void Gui3DOBJ::Draw() {
 
 
 	if (ImGui::Begin("3D Objects", &visible)) {
-		
-		/*if (ImGui::CollapsingHeader("Position")) {
-			ImGui::SliderInt("X", position.x, -25, 25);
-			ImGui::SliderInt("Y", &, -25, 25);
-			ImGui::SliderInt("Z", &, -25, 25);
-		}
 
-		
-		if (ImGui::CollapsingHeader("Transformations")) {
-			ImGui::SliderInt("Width", &, 1, 25);
-			ImGui::SliderInt("Height", &, 1, 25);
-			ImGui::SliderInt("Depth", &, 1, 25);
-		}*/
+		if (ImGui::CollapsingHeader("Basic shapes")) {
 
 		if (ImGui::Button("CUBE")) { App->scene->createShape(SHAPE::CUBE, vec3(0, 0, 0), vec3(1, 1, 1)); }
 		if (ImGui::Button("SPHERE")) { App->scene->createShape(SHAPE::SPHERE, vec3(0, 0, 0), vec3(1, 1, 1)); }
@@ -51,6 +40,28 @@ void Gui3DOBJ::Draw() {
 		if (ImGui::Button("TORUS")) { App->scene->createShape(SHAPE::TORUS, vec3(0, 0, 0), vec3(1, 1, 1)); }
 		if (ImGui::Button("CONE")) { App->scene->createShape(SHAPE::CONE, vec3(0, 0, 0), vec3(1, 1, 1)); }
 		if (ImGui::Button("CYLINDER")) { App->scene->createShape(SHAPE::CYLINDER, vec3(0, 0, 0), vec3(1, 1, 1)); }
+
+		}
+		if (ImGui::CollapsingHeader("Rendering options"))
+		{
+			if (ImGui::Checkbox("Depth Test", &DepthTest))
+				App->renderer3D->DepthTestEnable(DepthTest);
+
+			if (ImGui::Checkbox("Cull Face", &CullFace))
+				App->renderer3D->CullFaceEnable(CullFace);
+
+			if (ImGui::Checkbox("Lighting", &Lighting))
+				App->renderer3D->LightingEnable(Lighting);
+
+			if (ImGui::Checkbox("Color Material", &MaterialColor))
+				App->renderer3D->ColorMaterialEnable(MaterialColor);
+
+			if (ImGui::Checkbox("Texture 2D", &Texture2D))
+				App->renderer3D->Texture2DEnable(Texture2D);
+
+
+		}
+
 		ImGui::End();
 	}
 	

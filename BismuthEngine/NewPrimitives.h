@@ -34,6 +34,7 @@ public:
 private:
 	void ChangeList(par_shapes_mesh * mesh);
 	void Bufferer();
+	void Color(float* auxcolor);
 public:
 	void Draw();
 
@@ -53,6 +54,7 @@ public:
 	float center[3] = { 0, 0, 1 };
 	float normal[3] = { 0, 0, 1 };
 	float center2[3] = { 0, 0, 0 };
-	
+	float* color = nullptr;
+	float white[4] = { 255.f, 255.f, 255.f, 1.f };
 };
 #endif __NEWPRIMITIVES__H__

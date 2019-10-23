@@ -195,25 +195,7 @@ void GuiConfig::Draw(){
 			ImGui::PlotHistogram("##milliseconds", &App->ms_vec[0], App->ms_vec.size(), 0, title, 0.0f, 40.0f, ImVec2(310, 100));
 	
 		}
-		if (ImGui::CollapsingHeader("Renderer"))
-		{
-			if (ImGui::Checkbox("Depth Test", &DepthTest)) 
-				App->renderer3D->DepthTestEnable(DepthTest);
-
-			if (ImGui::Checkbox("Cull Face", &CullFace))
-				App->renderer3D->CullFaceEnable(CullFace);
-
-			if (ImGui::Checkbox("Lighting", &Lighting))
-				App->renderer3D->LightingEnable(Lighting);
-
-			if (ImGui::Checkbox("Color Material", &MaterialColor))
-				App->renderer3D->ColorMaterialEnable(MaterialColor);
-
-			if (ImGui::Checkbox("Texture 2D", &Texture2D))
-				App->renderer3D->Texture2DEnable(Texture2D);
-
-
-		}
+		
 
 		
 		

@@ -3,7 +3,9 @@
 
 
 Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
-
+	
+	color = new float[4];
+	
 	switch (shape){
 
 	case SHAPE::CUBE:
@@ -84,50 +86,22 @@ Primitives::Primitives(SHAPE shape,vec3& position, vec3& size){
 
 	Bufferer();
 	
+	Color( white );
 
 }
 
 Primitives::Primitives(SHAPE shape, vec3& position, vec3& size, float radius, float slices, float stacks) {
 
-	/*switch (shape) {
-
-	case SHAPE::TORUS:
-		mesh = par_shapes_create_torus(slices, stacks, radius);
-		par_shapes_rotate(mesh, -M_PI_2, rotation);
-
-	case SHAPE::CONE:
-		
-		mesh = par_shapes_create_cone(slices, stacks);
-		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
-		par_shapes_rotate(disk1, -M_PI, rotation);
-		par_shapes_merge(mesh, disk1);
-		par_shapes_free_mesh(disk1);
-		par_shapes_rotate(mesh, -M_PI_2, rotation);
-		break;
-
-	case SHAPE::CYLINDER:
-	
-		mesh = par_shapes_create_cylinder(slices, stacks);
-		disk2 = par_shapes_create_disk(radius, slices, center, normal);
-		par_shapes_merge(mesh, disk2);
-		par_shapes_free_mesh(disk2);
-		disk1 = par_shapes_create_disk(radius, slices, center2, normal);
-		par_shapes_rotate(disk1, M_PI, rotation);
-		par_shapes_merge(mesh, disk1);
-		par_shapes_free_mesh(disk1);
-		par_shapes_rotate(mesh, M_PI_2, rotation);
-		break;
-	}
-
-	par_shapes_scale(mesh, size.x, size.y, size.z);
-	par_shapes_translate(mesh, position.x, position.y, position.z);
-
-	ChangeList(mesh);
-	par_shapes_free_mesh(mesh);
-
-	Bufferer();*/
 }
 
+void Primitives::Color(float *auxcolor)
+{
+	if (auxcolor != nullptr)
+	{
+		for (int i = 0; i < 4; ++i)
+			color[i] = auxcolor[i];
+	}
+}
 
 Primitives::~Primitives(){
 
@@ -150,7 +124,7 @@ void Primitives::Draw(){
 	
 	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	
+	glColor4fv(color);
 	
 	glDrawArrays(GL_TRIANGLES, 0, triangle_vec.size() / 3);
 
