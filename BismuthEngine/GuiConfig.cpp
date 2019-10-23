@@ -69,12 +69,6 @@ void GuiConfig::Draw(){
 			if (ImGui::Checkbox("Full Screen", &fullscreen)) {
 				App->window->SetFullScreen(fullscreen);
 			}
-			else {
-				SDL_SetWindowSize(App->window->window, 1024, 768);
-
-			}
-
-
 
 			if (ImGui::Checkbox("Resizable", &resizable)) {
 				App->window->SetResizable(resizable);
@@ -83,6 +77,15 @@ void GuiConfig::Draw(){
 			if (ImGui::Checkbox("Borderless", &borderless)) {
 				App->window->SetBorderless(borderless);
 			}
+
+			if (ImGui::Checkbox("Set Default", &defaults)) {
+				SDL_SetWindowSize(App->window->window, 1024, 768);
+			}
+
+			if (width != 1024 || height != 768) {
+				defaults = false;
+			}
+
 		}
 		
 		if (ImGui::CollapsingHeader("Style editor")) {

@@ -111,6 +111,7 @@ void ModuleWindow::SetFullScreen(bool active)
 	}
 	else {
 		SDL_SetWindowFullscreen(window, SDL_WINDOW_MINIMIZED);
+		SDL_SetWindowSize(window, 1024, 768);
 	}
 		
 }

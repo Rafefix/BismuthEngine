@@ -26,11 +26,11 @@ private:
 	int		height = SCREEN_HEIGHT;
 	float	brightness = 1.0f;
 
-	bool	fullscreen = false;
-	bool	resizable = true;
-	bool	borderless = false;
-	bool	fulldesktop = false;
-	
+	bool fullscreen = false;
+	bool resizable = true;
+	bool borderless = false;
+	bool fulldesktop = false;
+	bool defaults = true;
 
 
 	GLint video_mem_budget = 0;
