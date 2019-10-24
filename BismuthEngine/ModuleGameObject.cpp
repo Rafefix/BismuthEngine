@@ -52,12 +52,13 @@ void GameObject::Draw() const {
 	
 	for (uint i = 0; i < c_mesh->mesh.size(); ++i) {
 
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glBindTexture(GL_TEXTURE_2D, c_texture->texture);
-		glActiveTexture(GL_TEXTURE0);
-		glBindBuffer(GL_ARRAY_BUFFER, c_mesh->mesh[i]->id_texture);
-		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
-
+		if (c_texture->active) {
+			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+			glBindTexture(GL_TEXTURE_2D, c_texture->texture);
+			glActiveTexture(GL_TEXTURE0);
+			glBindBuffer(GL_ARRAY_BUFFER, c_mesh->mesh[i]->id_texture);
+			glTexCoordPointer(2, GL_FLOAT, 0, NULL);
+		}
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, c_mesh->mesh[i]->id_vertex);
 		glVertexPointer(3, GL_FLOAT, 0, NULL);

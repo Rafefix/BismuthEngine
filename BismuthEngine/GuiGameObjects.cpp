@@ -19,6 +19,16 @@ void GameObjects::Draw()
 
 	if (ImGui::Begin("GameObjects: Heriarchy", NULL, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse))
 	{
+		static int selected = -1;
+		
+		for (int i = 0; i < App->scene->objectsList.size(); ++i) {
+			
+			if (ImGui::Selectable(App->scene->objectsList[i].name, App->scene->selected_id == i)) {
+				App->scene->selected_id = i;
+				App->scene->selected = &App->scene->objectsList[i];
+			}
+		}
+
 
 		ImGui::End();
 	}

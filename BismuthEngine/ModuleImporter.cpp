@@ -62,7 +62,12 @@ bool ModuleImporter::CleanUp()
 
 void ModuleImporter::LoadFile( char* path, uint tex) {
 
-	char* name = strstr(path, "/FBX/");
+	char* name = strstr(path, ".fbx");
+	if (name == nullptr) {
+		name = strstr(path, ".FBX");
+	} 
+	//char* name = strstr(path, "FBX");
+
 	GameObject Loadmesh(name);
 
 	const aiScene* scene = aiImportFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
@@ -120,9 +125,7 @@ void ModuleImporter::LoadFile( char* path, uint tex) {
 			Loadmesh.c_mesh->mesh.push_back(indexes);
 		}
 
-		//Loadmesh.c_texture->texture = tex;
-		//App->scene->objectsList.push_back(Loadmesh);
-
+	
 		if (tex == 0) { 
 			Loadmesh.c_texture->texture = texture;
 		}

@@ -96,6 +96,7 @@
     <ClInclude Include="GuiConfig.h" />
     <ClInclude Include="GuiAbout.h" />
     <ClInclude Include="GuiConsole.h" />
+    <ClInclude Include="GuiInspector.h" />
     <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
     <ClInclude Include="imgui_impl_opengl3.h" />
@@ -135,6 +136,7 @@
     <ClCompile Include="GuiConfig.cpp" />
     <ClCompile Include="GuiAbout.cpp" />
     <ClCompile Include="GuiConsole.cpp" />
+    <ClCompile Include="GuiInspector.cpp" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
     <ClCompile Include="imgui_draw.cpp" />

@@ -40,7 +40,7 @@ public:
 	std::vector<GameObject> objectsList;
 	GameObject* root = nullptr;
 	GameObject* selected = nullptr;
-	
+	int selected_id = -1;
 
 };
 

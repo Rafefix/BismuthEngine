@@ -122,11 +122,16 @@ update_status ModuleInput::PreUpdate(float dt)
 
 				if (e.drop.type == SDL_DROPFILE) {
 					if (strstr(e.drop.file, ".png") != nullptr || strstr(e.drop.file, ".dds") != nullptr) {
-						App->scene->selected->c_texture->texture = App->importer->GetTexture(e.drop.file);
+						if (App->scene->selected) {
+							App->scene->selected->c_texture->texture = App->importer->GetTexture(e.drop.file);
+						}
+						
 					}
 					
 					if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){
 						App->importer->LoadFile(e.drop.file);
+						App->scene->selected = &App->scene->objectsList.back();
+						App->scene->selected_id = App->scene->objectsList.size() - 1;
 					} 
 						
 					// Free dropped_filedir memory

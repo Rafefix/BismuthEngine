@@ -22,6 +22,7 @@ class GuiConfig;
 class GuiAbout;
 class GuiConsole;
 class Gui3DOBJ;
+class GuiInspector;
 
 class  GuiElement
 {
@@ -76,7 +77,9 @@ private:
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
 	GuiConsole* console = nullptr;
-	Gui3DOBJ * obj = nullptr;
+	Gui3DOBJ* obj = nullptr;
+	GuiInspector* inspector = nullptr;
+
 public:
 
 	ImGuiIO* io;

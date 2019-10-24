@@ -30,7 +30,26 @@ public:
 	void Enable() { active = true; }
 	void Disable() { active = false; }
 
-	void OnEditor() {}
+	void OnEditor() {
+		
+		if (ImGui::CollapsingHeader("Mesh")) {
+			ImGui::Checkbox("Enabled", &active);
+
+			ImGui::Text("Vertices:");
+			ImGui::SameLine();
+			uint cnt1 = 0;
+			for (uint i = 0; i < mesh.size(); ++i) cnt1 += mesh[i]->num_vertices;
+			ImGui::TextColored({ 255, 255, 0, 255 }, "%d", cnt1);
+
+			ImGui::Text("Faces:");
+			ImGui::SameLine();
+			uint cnt2 = 0;
+			for (uint i = 0; i < mesh.size(); ++i) cnt2 += mesh[i]->num_indices;
+			ImGui::TextColored({ 255, 255, 0, 255 }, "%d", cnt2);
+
+			ImGui::NewLine();
+		}
+	}
 
 	void Load() {};
 

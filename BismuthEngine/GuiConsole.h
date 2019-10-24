@@ -7,7 +7,7 @@ class GuiConsole : public GuiElement
 {
 public:
 
-	GuiConsole(bool is_visible = true);;
+	GuiConsole(bool is_visible = true);
 	virtual ~GuiConsole();
 
 	ImVector<char*> LogList;

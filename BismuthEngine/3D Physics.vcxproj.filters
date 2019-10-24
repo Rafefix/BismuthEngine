@@ -171,6 +171,9 @@
     <ClInclude Include="ComponentMesh.h">
       <Filter>Sources\Modules\ObjectComponents</Filter>
     </ClInclude>
+    <ClInclude Include="GuiInspector.h">
+      <Filter>Sources\Modules\GuiModules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -268,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="ModuleGameObject.cpp">
       <Filter>Sources\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="GuiInspector.cpp">
+      <Filter>Sources\Modules\GuiModules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

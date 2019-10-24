@@ -8,6 +8,7 @@
 #include "Gui3DObj.h"
 #include "GuiConsole.h"
 #include "GuiGameObjects.h"
+#include "GuiInspector.h"
 #include <stdio.h>
 
 //#include "json/json.hpp"
@@ -43,12 +44,14 @@ bool ModuleGui::Init(json file)
 	about = new GuiAbout(false);
 	console = new GuiConsole(false);
 	obj = new Gui3DOBJ(false);
+	inspector = new GuiInspector(false);
 
 	AddGuiElement(heri);
 	AddGuiElement(config);
 	AddGuiElement(about);
 	AddGuiElement(console);
 	AddGuiElement(obj);
+	AddGuiElement(inspector);
 	return true;
 }
 
@@ -109,7 +112,7 @@ update_status ModuleGui::Update(float dt)
 		if (ImGui::BeginMenu("File")){
 			
 			if (ImGui::MenuItem("Open", "Ctrl+O")) {
-				ret = UPDATE_STOP;
+				
 			}
 
 			if (ImGui::MenuItem("Save", "Ctrl+S")) {
@@ -117,7 +120,7 @@ update_status ModuleGui::Update(float dt)
 			}
 
 			if (ImGui::MenuItem("Quit", "Alt+F4")) {
-				
+				ret = UPDATE_STOP;
 			}
 				
 
