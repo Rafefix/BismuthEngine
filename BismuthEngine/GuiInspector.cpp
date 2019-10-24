@@ -17,10 +17,13 @@ void GuiInspector::Draw() {
 	/*if (!visible) {
 		return;
 	}
-	*/
+	*/ 
+	//LATER1 TRY TO MAKE IT CLOSE AND OPEN AGAIN by double clicking sleected or something idk
+
+
 	App->window->GetSize(window_width, window_height);
-	ImGui::SetNextWindowPos(ImVec2(300, 600), ImGuiCond_Once);
-	ImGui::SetNextWindowSize(ImVec2((float)window_width / 2, (float)window_height / 4.5), ImGuiCond_Once);
+	ImGui::SetNextWindowPos(ImVec2(650, 200), ImGuiCond_Once);
+	ImGui::SetNextWindowSize(ImVec2((float)window_width / 3, (float)window_height / 2), ImGuiCond_Once);
 
 	ImGui::Begin("Inspector", &visible);
 

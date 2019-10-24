@@ -123,7 +123,7 @@ bool ModuleScene::Start()
 bool ModuleScene::CleanUp()
 {
 	LOG("Unloading Intro scene");
-	//PRIMITIVES CLEAN UP TODO LATER
+	//PRIMITIVES CLEAN UP TODO LATER1
 	shapeList.clear();
 
 	// Delete all the GameObjects

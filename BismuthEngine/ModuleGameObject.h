@@ -8,6 +8,7 @@
 
 class ComponentMesh;
 class ComponentMaterial;
+class ComponentTransform;
 
 class GameObject {
 public:
@@ -25,8 +26,9 @@ public:
 	void OnEditor();
 public:
 
-	ComponentMesh* c_mesh = nullptr;
-	ComponentMaterial* c_texture = nullptr;	
+	ComponentMesh* Mesh_comp = nullptr;
+	ComponentMaterial* Tex_comp = nullptr;	
+	ComponentTransform* Transf_comp = nullptr;
 
 	std::string name = nullptr;
 	std::vector<Component*> components;

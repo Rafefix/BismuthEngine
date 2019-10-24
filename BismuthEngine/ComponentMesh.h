@@ -28,7 +28,6 @@ public:
 
 	void Update() {}
 	void Enable() { active = true; }
-	void Disable() { active = false; }
 
 	void OnEditor() {
 		

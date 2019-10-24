@@ -123,7 +123,7 @@ update_status ModuleInput::PreUpdate(float dt)
 				if (e.drop.type == SDL_DROPFILE) {
 					if (strstr(e.drop.file, ".png") != nullptr || strstr(e.drop.file, ".dds") != nullptr) {
 						if (App->scene->selected) {
-							App->scene->selected->c_texture->texture = App->importer->GetTexture(e.drop.file);
+							App->scene->selected->Tex_comp->texture = App->importer->GetTexture(e.drop.file);
 						}
 						
 					}

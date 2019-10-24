@@ -57,7 +57,7 @@ void GuiConfig::Draw(){
 	{
 
 		if (ImGui::CollapsingHeader("Window")) {
-			//App->renderer3D->OnResize((int)width, (int)height); //LATER BUG WHEN OPENED WINDOW MENU GRID NOT RENDERING CORRECTLY
+			//App->renderer3D->OnResize((int)width, (int)height); //LATER1 BUG WHEN OPENED WINDOW MENU GRID NOT RENDERING CORRECTLY
 			App->window->GetSize(width, height);
 
 			ImGui::SliderInt("Width", &width, 1, 1920);

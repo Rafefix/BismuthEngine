@@ -134,15 +134,15 @@ void ModuleImporter::LoadFile(const char* path, uint tex) {
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 2 * indexes->num_texture, indexes->textures, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-			Loadmesh.c_mesh->mesh.push_back(indexes);
+			Loadmesh.Mesh_comp->mesh.push_back(indexes);
 		}
 
 	
 		if (tex == 0) { 
-			Loadmesh.c_texture->texture = texture;
+			Loadmesh.Tex_comp->texture = texture;
 		}
 		else { 
-			Loadmesh.c_texture->texture = tex;
+			Loadmesh.Tex_comp->texture = tex;
 		}
 		App->scene->objectsList.push_back(Loadmesh);
 

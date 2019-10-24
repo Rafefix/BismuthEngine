@@ -38,7 +38,7 @@ void GuiAbout::Draw()
 		ImGui::BulletText("MathGeoLib");
 		ImGui::BulletText("OpenGL");
 		ImGui::BulletText("JSON");
-		//RANDOM NUMBER GENERATOR CHECK LATER
+		//RANDOM NUMBER GENERATOR CHECK LATER1
 
 		ImGui::Text("\nMIT License");
 		ImGui::Text("Copyright (c) 2019 Ferran Barnes Garica & Rafel Brau Ramia");

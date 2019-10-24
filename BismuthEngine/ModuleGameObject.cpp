@@ -1,7 +1,7 @@
 #include "ModuleGameObject.h"
 #include "ComponentMaterial.h"
 #include "ComponentMesh.h"
-
+#include "ComponentTransformation.h"
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
@@ -13,8 +13,9 @@
 GameObject::GameObject(std::string name, GameObject* parent) :
 	name(name), parent(parent)
 {
-	c_mesh = (ComponentMesh*)CreateComponent(COMPONENT_TYPE::MESH);
-	c_texture = (ComponentMaterial*)CreateComponent(COMPONENT_TYPE::MATERIAL);
+	Mesh_comp = (ComponentMesh*)CreateComponent(COMPONENT_TYPE::MESH);
+	Tex_comp = (ComponentMaterial*)CreateComponent(COMPONENT_TYPE::MATERIAL);
+	Transf_comp = (ComponentTransform*)CreateComponent(COMPONENT_TYPE::TRANSFORM);
 }
 
 
@@ -37,6 +38,10 @@ Component* GameObject::CreateComponent(COMPONENT_TYPE type, bool active) {
 		ret = new ComponentMesh(type, this, active);
 		if (ret != nullptr) components.push_back(ret); break;
 		
+	case COMPONENT_TYPE::TRANSFORM:
+		ret = new ComponentTransform(type, this, active);
+		if (ret != nullptr) components.push_back(ret); break;
+
 	}
 
 
@@ -50,20 +55,20 @@ void GameObject::OnEditor() {
 
 void GameObject::Draw() const {
 	
-	for (uint i = 0; i < c_mesh->mesh.size(); ++i) {
+	for (uint i = 0; i < Mesh_comp->mesh.size(); ++i) {
 
-		if (c_texture->active) {
+		if (Tex_comp->active) {
 			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-			glBindTexture(GL_TEXTURE_2D, c_texture->texture);
+			glBindTexture(GL_TEXTURE_2D, Tex_comp->texture);
 			glActiveTexture(GL_TEXTURE0);
-			glBindBuffer(GL_ARRAY_BUFFER, c_mesh->mesh[i]->id_texture);
+			glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_texture);
 			glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 		}
 		glEnableClientState(GL_VERTEX_ARRAY);
-		glBindBuffer(GL_ARRAY_BUFFER, c_mesh->mesh[i]->id_vertex);
+		glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_vertex);
 		glVertexPointer(3, GL_FLOAT, 0, NULL);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, c_mesh->mesh[i]->id_index);
-		glDrawElements(GL_TRIANGLES, c_mesh->mesh[i]->num_indices, GL_UNSIGNED_INT, NULL);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_index);
+		glDrawElements(GL_TRIANGLES, Mesh_comp->mesh[i]->num_indices, GL_UNSIGNED_INT, NULL);
 
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
