@@ -29,19 +29,38 @@ void Gui3DOBJ::Draw() {
 	if (ImGui::Begin("3D Objects", &visible)) {
 
 		if (ImGui::CollapsingHeader("Basic shapes")) {
-
-		if (ImGui::Button("CUBE")) { App->scene->createShape(SHAPE::CUBE, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("SPHERE")) { App->scene->createShape(SHAPE::SPHERE, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("OCTOHEDRON")) { App->scene->createShape(SHAPE::OCTOHEDRON, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("DODECAHEDRON")) { App->scene->createShape(SHAPE::DODECAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("ICOSAHEDRON")) { App->scene->createShape(SHAPE::ICOSAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("TETRAHEDRON")) { App->scene->createShape(SHAPE::TETRAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("PLANE")) { App->scene->createShape(SHAPE::PLANE, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("TORUS")) { App->scene->createShape(SHAPE::TORUS, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("CONE")) { App->scene->createShape(SHAPE::CONE, vec3(0, 0, 0), vec3(1, 1, 1)); }
-		if (ImGui::Button("CYLINDER")) { App->scene->createShape(SHAPE::CYLINDER, vec3(0, 0, 0), vec3(1, 1, 1)); }
+			//LATER1 Maybe add them to gameobjects not priority
+		if (ImGui::Button("CUBE")) { 
+			App->scene->createShape(SHAPE::CUBE, vec3(0, 0, 0), vec3(1, 1, 1)); 
+		}
+		if (ImGui::Button("SPHERE")) {
+			App->scene->createShape(SHAPE::SPHERE, vec3(0, 0, 0), vec3(1, 1, 1)); 
+		}
+		if (ImGui::Button("OCTOHEDRON")) { 
+			App->scene->createShape(SHAPE::OCTOHEDRON, vec3(0, 0, 0), vec3(1, 1, 1));
+		}
+		if (ImGui::Button("DODECAHEDRON")) { 
+			App->scene->createShape(SHAPE::DODECAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1));
+		}
+		if (ImGui::Button("ICOSAHEDRON")) {
+			App->scene->createShape(SHAPE::ICOSAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1));
+		}
+		if (ImGui::Button("TETRAHEDRON")) { 
+			App->scene->createShape(SHAPE::TETRAHEDRON, vec3(0, 0, 0), vec3(1, 1, 1)); 
+		}
+		if (ImGui::Button("PLANE")) {
+			App->scene->createShape(SHAPE::PLANE, vec3(0, 0, 0), vec3(1, 1, 1));
+		}
+		//if (ImGui::Button("TORUS")) {
+		//App->scene->createShape(SHAPE::TORUS, vec3(0, 0, 0), vec3(1, 1, 1));
+		//}
+		if (ImGui::Button("CONE")) {
+			App->scene->createShape(SHAPE::CONE, vec3(0, 0, 0), vec3(1, 1, 1)); }
+		if (ImGui::Button("CYLINDER")) {
+			App->scene->createShape(SHAPE::CYLINDER, vec3(0, 0, 0), vec3(1, 1, 1)); }
 
 		}
+		
 		if (ImGui::CollapsingHeader("Rendering options"))
 		{
 			if (ImGui::Checkbox("Depth Test", &DepthTest))

@@ -7,12 +7,12 @@
 
 
 
-class ComponentTransform : public Component {
+class CTransform : public Component {
 public:
-	ComponentTransform(COMPONENT_TYPE type, GameObject* parent, bool active) :
+	CTransform(COMPONENT_TYPE type, GameObject* parent, bool active) :
 		Component(type, parent, active) {}
 
-	~ComponentTransform() {}
+	~CTransform() {}
 
 	void Update() {}
 	void Enable() { active = true; }

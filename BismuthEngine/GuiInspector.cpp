@@ -1,5 +1,5 @@
 #include "GuiInspector.h"
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 #include "Application.h"
 #include "ModuleScene.h"
 #include "imgui.h"
@@ -29,7 +29,6 @@ void GuiInspector::Draw() {
 
 	if (App->scene->selected != nullptr) {
 		ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name.c_str());
-		ImGui::NewLine();
 		App->scene->selected->OnEditor();
 	}
 

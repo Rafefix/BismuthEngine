@@ -3,12 +3,12 @@
 
 #include "Component.h"
 
-class ComponentMaterial : public Component {
+class CMaterial : public Component {
 public:
-	ComponentMaterial(COMPONENT_TYPE type, GameObject* parent, bool active) :
+	CMaterial(COMPONENT_TYPE type, GameObject* parent, bool active) :
 		Component(type, parent, active) {}
 
-	~ComponentMaterial() {}
+	~CMaterial() {}
 
 	
 	void Update() {}
@@ -16,7 +16,6 @@ public:
 
 	void OnEditor() {
 		if (ImGui::CollapsingHeader("Material")) {
-			
 			ImGui::Image((void*)texture, ImVec2(200, 200), ImVec2(0, 1), ImVec2(1, 0));
 		}
 	}

@@ -3,7 +3,7 @@
 
 #include "Module.h"
 #include <vector>
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 
 // ---------------------------------------------------
 class ModuleImporter : public Module

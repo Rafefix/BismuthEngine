@@ -19,12 +19,12 @@ struct MeshData {
 };
 
 
-class ComponentMesh : public Component {
+class CMesh : public Component {
 public:
-	ComponentMesh(COMPONENT_TYPE type, GameObject* parent, bool active) :
+	CMesh(COMPONENT_TYPE type, GameObject* parent, bool active) :
 		Component(type, parent, active) {}
 
-	~ComponentMesh() {}
+	~CMesh() {}
 
 	void Update() {}
 	void Enable() { active = true; }
@@ -32,7 +32,6 @@ public:
 	void OnEditor() {
 		
 		if (ImGui::CollapsingHeader("Mesh")) {
-			ImGui::Checkbox("Enabled", &active);
 
 			ImGui::Text("Vertices:");
 			ImGui::SameLine();

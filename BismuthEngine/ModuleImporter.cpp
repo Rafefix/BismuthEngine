@@ -1,7 +1,7 @@
 #include "ModuleImporter.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 #include "ComponentMaterial.h"
 #include "ComponentMesh.h"
 

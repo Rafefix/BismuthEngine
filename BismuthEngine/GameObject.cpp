@@ -1,4 +1,4 @@
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 #include "ComponentMaterial.h"
 #include "ComponentMesh.h"
 #include "ComponentTransformation.h"
@@ -13,9 +13,9 @@
 GameObject::GameObject(std::string name, GameObject* parent) :
 	name(name), parent(parent)
 {
-	Mesh_comp = (ComponentMesh*)CreateComponent(COMPONENT_TYPE::MESH);
-	Tex_comp = (ComponentMaterial*)CreateComponent(COMPONENT_TYPE::MATERIAL);
-	Transf_comp = (ComponentTransform*)CreateComponent(COMPONENT_TYPE::TRANSFORM);
+	Mesh_comp = (CMesh*)AddComponent(COMPONENT_TYPE::MESH);
+	Tex_comp = (CMaterial*)AddComponent(COMPONENT_TYPE::MATERIAL);
+	Transf_comp = (CTransform*)AddComponent(COMPONENT_TYPE::TRANSFORM);
 }
 
 
@@ -26,20 +26,20 @@ void GameObject::Update() {
 }
 
 
-Component* GameObject::CreateComponent(COMPONENT_TYPE type, bool active) {
+Component* GameObject::AddComponent(COMPONENT_TYPE type, bool active) {
 	Component* ret = nullptr;
 	switch (type)
 	{
 	case COMPONENT_TYPE::MATERIAL:
-		ret = new ComponentMaterial(type, this, active);
+		ret = new CMaterial(type, this, active);
 		if (ret != nullptr) components.push_back(ret); break;
 
 	case COMPONENT_TYPE::MESH:
-		ret = new ComponentMesh(type, this, active);
+		ret = new CMesh(type, this, active);
 		if (ret != nullptr) components.push_back(ret); break;
 		
 	case COMPONENT_TYPE::TRANSFORM:
-		ret = new ComponentTransform(type, this, active);
+		ret = new CTransform(type, this, active);
 		if (ret != nullptr) components.push_back(ret); break;
 
 	}
@@ -64,6 +64,7 @@ void GameObject::Draw() const {
 			glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_texture);
 			glTexCoordPointer(2, GL_FLOAT, 0, NULL);
 		}
+
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_vertex);
 		glVertexPointer(3, GL_FLOAT, 0, NULL);

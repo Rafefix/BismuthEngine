@@ -2,7 +2,7 @@
 #include "Application.h"
 #include "ModuleInput.h"
 #include "ModuleScene.h"
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 #include "ComponentMaterial.h"
 
 #define MAX_KEYS 300

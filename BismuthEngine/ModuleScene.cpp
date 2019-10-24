@@ -4,11 +4,11 @@
 #include "NewPrimitives.h"
 #include "ModuleImporter.h"
 #include "ModuleRenderer3D.h"
-#include "ModuleGameObject.h"
+#include "GameObject.h"
 #include "math.h"
 
 
-
+//Square data using different methods for debbuging purposes
 GLfloat vertices1[] = { 1, 1, 1,  -1, 1, 1,  -1,-1, 1,      // v0-v1-v2 (front)
 				   -1,-1, 1,   1,-1, 1,   1, 1, 1,      // v2-v3-v0
 

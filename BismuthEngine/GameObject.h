@@ -1,14 +1,14 @@
-#ifndef __MODULEGAMEOBJECT_H__
-#define __MODULEGAMEOBJECT_H__
+#ifndef __GAMEOBJECT_H__
+#define __GAMEOBJECT_H__
 
 #include <vector>
 #include "Module.h"
 #include "Component.h"
 #include <vector>
 
-class ComponentMesh;
-class ComponentMaterial;
-class ComponentTransform;
+class CMesh;
+class CMaterial;
+class CTransform;
 
 class GameObject {
 public:
@@ -17,18 +17,17 @@ public:
 	GameObject(std::string name, GameObject* parent = nullptr);
 	
 	virtual ~GameObject() {};
-	void Start();
 	void Update();
 	void Draw() const;		
 	void CleanUp();
 
-	Component* CreateComponent(COMPONENT_TYPE type, bool active = true);
+	Component* AddComponent(COMPONENT_TYPE type, bool active = true);
 	void OnEditor();
 public:
 
-	ComponentMesh* Mesh_comp = nullptr;
-	ComponentMaterial* Tex_comp = nullptr;	
-	ComponentTransform* Transf_comp = nullptr;
+	CMesh* Mesh_comp = nullptr;
+	CMaterial* Tex_comp = nullptr;
+	CTransform* Transf_comp = nullptr;
 
 	std::string name = nullptr;
 	std::vector<Component*> components;
@@ -36,4 +35,4 @@ public:
 	GameObject* parent;
 };
 
-#endif // __MODULEGAMEOBJECT_H__ 
+#endif // __GAMEOBJECT_H__ 
