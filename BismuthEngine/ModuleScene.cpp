@@ -4,6 +4,7 @@
 #include "NewPrimitives.h"
 #include "ModuleImporter.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleGameObject.h"
 #include "math.h"
 
 
@@ -107,7 +108,7 @@ bool ModuleScene::Start()
 {
 	LOG("Loading Intro assets");
 	bool ret = true;
-
+	selected = &objectsList[0];
 	App->camera->Move(vec3(1.0f, 1.0f, 0.0f));
 	App->camera->LookAt(vec3(0, 0, 0));
 
@@ -119,18 +120,32 @@ bool ModuleScene::Start()
 bool ModuleScene::CleanUp()
 {
 	LOG("Unloading Intro scene");
-	objectList.clear();
+	//PRIMITIVES CLEAN UP TODO LATER
+	shapeList.clear();
+
+	// Delete all the GameObjects
+	for (uint i = 0; i < objectsList.size(); ++i) {
+		objectsList[i].CleanUp();
+	}
+
+	objectsList.clear();
+
 	return true;
 }
 
 // Update
 update_status ModuleScene::Update(float dt)
 {
-	for (std::list<Primitives*>::iterator item = objectList.begin(); item != objectList.end(); ++item)
+	for (std::list<Primitives*>::iterator item = shapeList.begin(); item != shapeList.end(); ++item)
 	{
 		(*item)->Draw();
 	}
 	
+	for (uint i = 0; i < objectsList.size(); ++i) {
+		objectsList[i].Draw();
+		
+	}
+
 	createfloor();
 	return UPDATE_CONTINUE;
 }
@@ -295,7 +310,7 @@ Primitives* ModuleScene::createShape(SHAPE type, vec3 &position, vec3 &size){
 	}
 
 	if (ret != nullptr) {
-		objectList.push_back(ret);     
+		shapeList.push_back(ret);
 	}
 		
 	

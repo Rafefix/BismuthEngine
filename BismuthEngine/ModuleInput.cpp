@@ -1,6 +1,9 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+#include "ModuleScene.h"
+#include "ModuleGameObject.h"
+#include "ComponentMaterial.h"
 
 #define MAX_KEYS 300
 
@@ -118,8 +121,8 @@ update_status ModuleInput::PreUpdate(float dt)
 			case SDL_DROPFILE:
 
 				if (e.drop.type == SDL_DROPFILE) {
-					if (strstr(e.drop.file, ".png") != nullptr) {
-						App->importer->texture = App->importer->GetTexture(e.drop.file);
+					if (strstr(e.drop.file, ".png") != nullptr || strstr(e.drop.file, ".dds") != nullptr) {
+						App->scene->selected->c_texture->texture = App->importer->GetTexture(e.drop.file);
 					}
 					
 					if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){

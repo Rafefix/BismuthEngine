@@ -1,6 +1,7 @@
 #include "GuiConfig.h"
 #include "Application.h"
 #include "ModuleWindow.h"
+#include "ModuleScene.h"
 #include "ModuleRenderer3D.h"
 #include "imgui.h"
 #include "glew/include/GL/glew.h"

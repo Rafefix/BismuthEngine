@@ -50,25 +50,21 @@ bool ModuleImporter::Start(){
 
 update_status ModuleImporter::Update(float dt)
 {
-	for (uint i = 0; i < gameObjects.size(); ++i) {
-		gameObjects[i].Draw();	
-	}
+
 	return UPDATE_CONTINUE;
 }
 
 bool ModuleImporter::CleanUp()
 {
-	for (uint i = 0; i < gameObjects.size(); ++i) {
-		gameObjects[i].CleanUp();
-	}
-	gameObjects.clear();
-
+	
 	return true;
 }
 
-void ModuleImporter::LoadFile(const char* path, uint tex, char* name) {
+void ModuleImporter::LoadFile( char* path, uint tex) {
 
+	char* name = strstr(path, "/FBX/");
 	GameObject Loadmesh(name);
+
 	const aiScene* scene = aiImportFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
 
 	if (scene != nullptr && scene->HasMeshes()){
@@ -124,18 +120,16 @@ void ModuleImporter::LoadFile(const char* path, uint tex, char* name) {
 			Loadmesh.c_mesh->mesh.push_back(indexes);
 		}
 
-		//aiNode* node = scene->mRootNode;
+		//Loadmesh.c_texture->texture = tex;
+		//App->scene->objectsList.push_back(Loadmesh);
 
-		
-
-		//CHECK FOR ERROR LATER
-		if (tex == 0) {
+		if (tex == 0) { 
 			Loadmesh.c_texture->texture = texture;
-		}else {
+		}
+		else { 
 			Loadmesh.c_texture->texture = tex;
 		}
-			
-		gameObjects.push_back(Loadmesh);
+		App->scene->objectsList.push_back(Loadmesh);
 
 		aiReleaseImport(scene);
 	}

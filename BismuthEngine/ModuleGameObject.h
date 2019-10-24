@@ -22,11 +22,10 @@ public:
 	void CleanUp();
 
 	Component* CreateComponent(COMPONENT_TYPE type, bool active = true);
-
+	void OnEditor();
 public:
 
 	ComponentMesh* c_mesh = nullptr;
-
 	ComponentMaterial* c_texture = nullptr;	
 
 	char* name;

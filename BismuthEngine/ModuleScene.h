@@ -13,7 +13,7 @@
 
 #define MAX_SNAKE 8
 
-
+class GameObject;
 class Primitives;
 
 class ModuleScene : public Module
@@ -36,7 +36,11 @@ public:
 	void createfloor();
 	Primitives* createShape(SHAPE type, vec3 &position, vec3 &size);
 public:
-	std::list<Primitives*> objectList;
+	std::list<Primitives*> shapeList;
+	std::vector<GameObject> objectsList;
+	GameObject* root = nullptr;
+	GameObject* selected = nullptr;
+	
 
 };
 

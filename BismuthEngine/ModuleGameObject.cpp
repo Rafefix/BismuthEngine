@@ -39,16 +39,14 @@ Component* GameObject::CreateComponent(COMPONENT_TYPE type, bool active) {
 		
 	}
 
+
 	return ret;
 }
 
-
-
-
-
-
-
-
+void GameObject::OnEditor() {
+	for (int i = 0; i < components.size(); ++i)
+		components[i]->OnEditor();
+}
 
 void GameObject::Draw() const {
 	
