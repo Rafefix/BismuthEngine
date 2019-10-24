@@ -3,35 +3,36 @@
 
 #include <vector>
 #include "Module.h"
+#include "Component.h"
 #include <vector>
 
-struct MeshData {
-
-	uint id_index = 0;
-	uint num_indices = 0;
-	uint* indices = nullptr;
-	uint id_vertex = 0;
-	uint num_vertices = 0;
-	float* vertices = nullptr;
-	uint id_texture = 0;
-	uint num_texture = 0;
-	float* textures = nullptr;
-
-};
+class ComponentMesh;
+class ComponentMaterial;
 
 class GameObject {
 public:
+
 	GameObject() {};
+	GameObject(char* name, GameObject* parent = nullptr);
 	
 	virtual ~GameObject() {};
-
+	void Start();
+	void Update();
 	void Draw() const;		
 	void CleanUp();
 
+	Component* CreateComponent(COMPONENT_TYPE type, bool active = true);
+
 public:
-	
-	std::vector<MeshData*> mesh;
-	uint texture = 0;	
+
+	ComponentMesh* c_mesh = nullptr;
+
+	ComponentMaterial* c_texture = nullptr;	
+
+	char* name;
+	std::vector<Component*> components;
+	std::vector<GameObject*> children;
+	GameObject* parent;
 };
 
 #endif // __MODULEGAMEOBJECT_H__ 

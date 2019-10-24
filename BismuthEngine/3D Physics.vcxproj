@@ -85,6 +85,9 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="Base.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="ComponentMaterial.h" />
+    <ClInclude Include="ComponentMesh.h" />
     <ClInclude Include="glcorearb.h" />
     <ClInclude Include="glew\include\GL\glew.h" />
     <ClInclude Include="glmath.h" />

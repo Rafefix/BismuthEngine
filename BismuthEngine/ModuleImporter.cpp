@@ -1,7 +1,9 @@
 #include "ModuleImporter.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
-
+#include "ModuleGameObject.h"
+#include "ComponentMaterial.h"
+#include "ComponentMesh.h"
 
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
@@ -49,8 +51,7 @@ bool ModuleImporter::Start(){
 update_status ModuleImporter::Update(float dt)
 {
 	for (uint i = 0; i < gameObjects.size(); ++i) {
-		gameObjects[i].Draw();
-	
+		gameObjects[i].Draw();	
 	}
 	return UPDATE_CONTINUE;
 }
@@ -65,9 +66,9 @@ bool ModuleImporter::CleanUp()
 	return true;
 }
 
-void ModuleImporter::LoadFile(const char* path, uint tex) {
+void ModuleImporter::LoadFile(const char* path, uint tex, char* name) {
 
-	GameObject Loadmesh;
+	GameObject Loadmesh(name);
 	const aiScene* scene = aiImportFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
 
 	if (scene != nullptr && scene->HasMeshes()){
@@ -120,22 +121,18 @@ void ModuleImporter::LoadFile(const char* path, uint tex) {
 			glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 2 * indexes->num_texture, indexes->textures, GL_STATIC_DRAW);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-			Loadmesh.mesh.push_back(indexes);
+			Loadmesh.c_mesh->mesh.push_back(indexes);
 		}
 
-		aiNode* node = scene->mRootNode;
+		//aiNode* node = scene->mRootNode;
 
-		for (uint i = 0; i < node->mNumChildren; ++i) {
-			aiVector3D translation, scale;
-			aiQuaternion rotation;
-			node->mTransformation.Decompose(scale, rotation, translation);
-		}
+		
 
 		//CHECK FOR ERROR LATER
 		if (tex == 0) {
-			Loadmesh.texture = texture;
+			Loadmesh.c_texture->texture = texture;
 		}else {
-			Loadmesh.texture = tex;
+			Loadmesh.c_texture->texture = tex;
 		}
 			
 		gameObjects.push_back(Loadmesh);
@@ -200,4 +197,10 @@ uint ModuleImporter::GetTexture(const char* path){
 
 		return aux_texture;
 	}
+}
+
+GameObject* ModuleImporter::CreateGameObject() {
+	GameObject* ret = nullptr;
+
+	return ret;
 }

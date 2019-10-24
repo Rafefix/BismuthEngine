@@ -40,6 +40,9 @@
     <Filter Include="Sources\Tools\things to delete">
       <UniqueIdentifier>{8527b25b-c25c-4c8b-8566-7dd0e14cee3a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\Modules\ObjectComponents">
+      <UniqueIdentifier>{a411d091-2a02-45bc-95ca-4fabcafdb190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Module.h">
@@ -158,6 +161,15 @@
     </ClInclude>
     <ClInclude Include="ModuleGameObject.h">
       <Filter>Sources\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Sources\Modules\ObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentMaterial.h">
+      <Filter>Sources\Modules\ObjectComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="ComponentMesh.h">
+      <Filter>Sources\Modules\ObjectComponents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
