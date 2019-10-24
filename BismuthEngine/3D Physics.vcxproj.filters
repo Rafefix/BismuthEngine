@@ -156,6 +156,9 @@
     <ClInclude Include="GuiGameObjects.h">
       <Filter>Sources\Modules\GuiModules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleGameObject.h">
+      <Filter>Sources\Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ModuleCamera3D.cpp">
@@ -250,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="GuiGameObjects.cpp">
       <Filter>Sources\Modules\GuiModules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleGameObject.cpp">
+      <Filter>Sources\Modules</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

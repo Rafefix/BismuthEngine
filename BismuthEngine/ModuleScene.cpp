@@ -232,10 +232,10 @@ void ModuleScene::createSquareElements()
 void ModuleScene::createfloor()
 {
 	//Direct CUBE
-	glLineWidth(1.0f);
+	glLineWidth(0.5f);
 
 	glBegin(GL_LINES);
-
+	
 	for (int i = -200.f; i < 200.f; i=i+1.f) {
 		
 		glVertex3f(-200.f, 0.f, i);

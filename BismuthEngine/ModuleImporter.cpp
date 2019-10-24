@@ -1,7 +1,7 @@
 #include "ModuleImporter.h"
 #include "Application.h"
 #include "ModuleRenderer3D.h"
-#include "NewMesh.h"
+
 
 #include "glew/include/GL/glew.h"
 #include "SDL/include/SDL_opengl.h"
@@ -48,30 +48,33 @@ bool ModuleImporter::Start(){
 
 update_status ModuleImporter::Update(float dt)
 {
-	for (uint i = 0; i < MeshArray.size(); ++i) {
-		Draw(MeshArray[i]);
+	for (uint i = 0; i < gameObjects.size(); ++i) {
+		gameObjects[i].Draw();
+	
 	}
 	return UPDATE_CONTINUE;
 }
 
 bool ModuleImporter::CleanUp()
 {
-	for (uint i = 0; i < MeshArray.size(); ++i) MeshArray[i].mesh.clear(); {
-		MeshArray.clear();
+	for (uint i = 0; i < gameObjects.size(); ++i) {
+		gameObjects[i].CleanUp();
 	}
+	gameObjects.clear();
+
 	return true;
 }
 
 void ModuleImporter::LoadFile(const char* path, uint tex) {
 
-	Mesh Loadmesh;
+	GameObject Loadmesh;
 	const aiScene* scene = aiImportFile(path, aiProcessPreset_TargetRealtime_MaxQuality);
 
 	if (scene != nullptr && scene->HasMeshes()){
 
 		for (uint i = 0; i < scene->mNumMeshes; ++i) {
 
-			MeshIndexes* indexes = new MeshIndexes;
+			MeshData* indexes = new MeshData;
 
 			
 			indexes->num_vertices = scene->mMeshes[i]->mNumVertices;
@@ -119,6 +122,15 @@ void ModuleImporter::LoadFile(const char* path, uint tex) {
 
 			Loadmesh.mesh.push_back(indexes);
 		}
+
+		aiNode* node = scene->mRootNode;
+
+		for (uint i = 0; i < node->mNumChildren; ++i) {
+			aiVector3D translation, scale;
+			aiQuaternion rotation;
+			node->mTransformation.Decompose(scale, rotation, translation);
+		}
+
 		//CHECK FOR ERROR LATER
 		if (tex == 0) {
 			Loadmesh.texture = texture;
@@ -126,40 +138,16 @@ void ModuleImporter::LoadFile(const char* path, uint tex) {
 			Loadmesh.texture = tex;
 		}
 			
-		MeshArray.push_back(Loadmesh);
+		gameObjects.push_back(Loadmesh);
 
 		aiReleaseImport(scene);
 	}
 	else LOG("Error loading FBX: %s", path);
 }
 
-void ModuleImporter::Draw(Mesh fbx_mesh) {
 
-	for (uint i = 0; i < fbx_mesh.mesh.size(); ++i) {
+uint ModuleImporter::GetTexture(const char* path){
 
-		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		glBindTexture(GL_TEXTURE_2D, fbx_mesh.texture);
-		glActiveTexture(GL_TEXTURE0);
-		glBindBuffer(GL_ARRAY_BUFFER, fbx_mesh.mesh[i]->id_texture);
-		glTexCoordPointer(2, GL_FLOAT, 0, NULL);
-
-		glEnableClientState(GL_VERTEX_ARRAY);
-		glBindBuffer(GL_ARRAY_BUFFER, fbx_mesh.mesh[i]->id_vertex);
-		glVertexPointer(3, GL_FLOAT, 0, NULL);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, fbx_mesh.mesh[i]->id_index);
-		glDrawElements(GL_TRIANGLES, fbx_mesh.mesh[i]->num_indices, GL_UNSIGNED_INT, NULL);
-
-		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		glDisableClientState(GL_VERTEX_ARRAY);
-		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, 0);
-	}
-}
-
-uint ModuleImporter::GetTexture(const char* path)
-{
 	ilInit();
 	iluInit();
 	ilEnable(IL_CONV_PAL);
