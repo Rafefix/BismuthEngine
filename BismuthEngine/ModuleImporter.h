@@ -18,11 +18,12 @@ public:
 	update_status Update(float dt);
 	bool CleanUp();
 
-	void LoadFile( char* path, uint tex = 0);
+	void LoadFile(const char* path, uint tex = 0);
 	uint GetTexture(const char* path);
 	GameObject* CreateGameObject();
 public:
 	uint texture;
+	bool loadedAll = false;
 	
 };
 

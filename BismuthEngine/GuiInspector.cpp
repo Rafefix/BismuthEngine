@@ -25,7 +25,7 @@ void GuiInspector::Draw() {
 	ImGui::Begin("Inspector", &visible);
 
 	if (App->scene->selected != nullptr) {
-		ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name);
+		ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name.c_str());
 		ImGui::NewLine();
 		App->scene->selected->OnEditor();
 	}

@@ -23,7 +23,7 @@ void GameObjects::Draw()
 		
 		for (int i = 0; i < App->scene->objectsList.size(); ++i) {
 			
-			if (ImGui::Selectable(App->scene->objectsList[i].name, App->scene->selected_id == i)) {
+			if (ImGui::Selectable(App->scene->objectsList[i].name.c_str(), App->scene->selected_id == i)) {
 				App->scene->selected_id = i;
 				App->scene->selected = &App->scene->objectsList[i];
 			}

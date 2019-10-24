@@ -18,7 +18,7 @@ public:
 	void OnEditor() {
 		if (ImGui::CollapsingHeader("Material")) {
 			
-			ImGui::Image((void*)texture, ImVec2(300, 300), ImVec2(0, 1), ImVec2(1, 0));
+			ImGui::Image((void*)texture, ImVec2(200, 200), ImVec2(0, 1), ImVec2(1, 0));
 		}
 	}
 

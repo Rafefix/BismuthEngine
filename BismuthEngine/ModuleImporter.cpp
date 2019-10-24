@@ -43,7 +43,7 @@ bool ModuleImporter::Start(){
 	
 	texture = GetTexture("Assets/Baker_house.png");
 	LoadFile("Assets/BakerHouse.fbx");
-	
+	loadedAll = true;
 	
 	return true;
 }
@@ -60,13 +60,25 @@ bool ModuleImporter::CleanUp()
 	return true;
 }
 
-void ModuleImporter::LoadFile( char* path, uint tex) {
+void ModuleImporter::LoadFile(const char* path, uint tex) {
 
-	char* name = strstr(path, ".fbx");
-	if (name == nullptr) {
-		name = strstr(path, ".FBX");
-	} 
-	//char* name = strstr(path, "FBX");
+	std::string n = path;
+	std::string directory;
+
+	size_t i;
+	if (loadedAll) i = n.rfind('\\', n.length());
+	else i = n.rfind('//', n.length());
+
+	if (i != std::string::npos) {
+		directory = (n.substr(i + 1, n.length() - i));
+	}
+
+	std::string name;
+	const size_t last_slash_idx = directory.rfind('.');
+	if (std::string::npos != last_slash_idx)
+	{
+		name = directory.substr(0, last_slash_idx);
+	}
 
 	GameObject Loadmesh(name);
 

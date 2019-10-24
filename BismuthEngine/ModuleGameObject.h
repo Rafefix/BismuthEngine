@@ -13,7 +13,7 @@ class GameObject {
 public:
 
 	GameObject() {};
-	GameObject(char* name, GameObject* parent = nullptr);
+	GameObject(std::string name, GameObject* parent = nullptr);
 	
 	virtual ~GameObject() {};
 	void Start();
@@ -28,7 +28,7 @@ public:
 	ComponentMesh* c_mesh = nullptr;
 	ComponentMaterial* c_texture = nullptr;	
 
-	char* name = nullptr;
+	std::string name = nullptr;
 	std::vector<Component*> components;
 	std::vector<GameObject*> children;
 	GameObject* parent;
