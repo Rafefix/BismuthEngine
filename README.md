@@ -1,6 +1,5 @@
 # BismuthEngine
-Repository for the degree course in Engines, where we will create our own engine from scratch
-containing info about the engine, author,
+Repository for the degree course in Engines, where we will create our own engine from scratch.
 
 Our engine, Bismuth Engine, is a videogame engine made from scratch by two students in the 
 UPC degree in Design and Development of Videogames, and more specifically, during the course in 
