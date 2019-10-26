@@ -6,6 +6,8 @@
 #include "SDL/include/SDL_opengl.h"
 #include <gl/GL.h>
 #include <gl/GLU.h>
+#include "Application.h"
+#include "ModuleImporter.h"
 
 #include "glmath.h"
 
@@ -57,13 +59,18 @@ void GameObject::Draw() const {
 	
 	for (uint i = 0; i < Mesh_comp->mesh.size(); ++i) {
 
+		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
 		if (Tex_comp->active) {
-			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 			glBindTexture(GL_TEXTURE_2D, Tex_comp->texture);
+		}
+		else {
+			glBindTexture(GL_TEXTURE_2D, App->importer->def_texture);
+		}
 			glActiveTexture(GL_TEXTURE0);
 			glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_texture);
 			glTexCoordPointer(2, GL_FLOAT, 0, NULL);
-		}
+		
 
 		glEnableClientState(GL_VERTEX_ARRAY);
 		glBindBuffer(GL_ARRAY_BUFFER, Mesh_comp->mesh[i]->id_vertex);

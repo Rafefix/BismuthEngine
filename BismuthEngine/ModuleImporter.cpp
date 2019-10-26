@@ -41,6 +41,9 @@ bool ModuleImporter::Init()
 
 bool ModuleImporter::Start(){
 
+	
+	texture = GetTexture("Assets/Baker_house.png");
+
 	GLubyte checkImage[CHECKERS_HEIGHT][CHECKERS_WIDTH][4];
 
 	for (int i = 0; i < CHECKERS_HEIGHT; i++)
@@ -66,7 +69,6 @@ bool ModuleImporter::Start(){
 		0, GL_RGBA, GL_UNSIGNED_BYTE, checkImage);
 	glBindTexture(GL_TEXTURE_2D, 0);
 
-	texture = GetTexture("Assets/Baker_house.png");
 	LoadFile("Assets/BakerHouse.fbx");
 	loadedAll = true;
 	
