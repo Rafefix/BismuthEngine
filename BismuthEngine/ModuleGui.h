@@ -57,6 +57,8 @@ public:
 	void MouseInput(SDL_Event * event);
 	update_status PreUpdate(float dt);
 	update_status Update(float dt);
+
+	GuiConsole* console = nullptr;
 	
 private:
 
@@ -69,14 +71,13 @@ private:
 
 	bool show_demo_window = false;
 	bool show_style_editor = false;
-	bool show_console = false;
+	bool show_console = true;
 
 	class std::list<GuiElement*> gui_elements;
 
 	GameObjects* heri = nullptr;
 	GuiConfig* config = nullptr;
 	GuiAbout* about = nullptr;
-	GuiConsole* console = nullptr;
 	Gui3DOBJ* obj = nullptr;
 	GuiInspector* inspector = nullptr;
 

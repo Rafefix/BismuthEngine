@@ -18,7 +18,7 @@ void log(const char file[], int line, const char* format, ...);
 #define HAVE_M_PI
 #define IM_NEWLINE  "\r\n"
 
-#define LOG_CONSOLE(text, ...) App->console->AddLog(text, __VA_ARGS__);
+#define LOG_CONSOLE(text, ...) App->gui->console->AddLog(text, __VA_ARGS__);
 
 typedef unsigned int uint;
 //Buffer release 
@@ -57,5 +57,5 @@ enum update_status
 #define WIN_FULLSCREEN_DESKTOP false
 #define VSYNC true
 #define TITLE "Bismuth Engine"
-#define CHECKERS_WIDTH 10
-#define CHECKERS_HEIGHT 10
+#define CHECKERS_WIDTH 100
+#define CHECKERS_HEIGHT 100

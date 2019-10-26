@@ -3,7 +3,7 @@
 #include "ModuleRenderer3D.h"
 #include "SDL\include\SDL_opengl.h"
 #include "ModuleGui.h"
-
+#include "GuiConsole.h"
 
 #include <gl/GL.h>
 #include <gl/GLU.h>
@@ -22,7 +22,8 @@ ModuleRenderer3D::~ModuleRenderer3D()
 // Called before render is available
 bool ModuleRenderer3D::Init(json file)
 {
-	LOG("Creating 3D Renderer context");
+	LOG_CONSOLE("Creating 3D Renderer context");
+
 	bool ret = true;
 
 	//Create context

@@ -12,6 +12,7 @@ GuiConsole::~GuiConsole() {
 
 void GuiConsole::Start()
 {
+	visible = true;
 }
 
 void GuiConsole::Draw()
@@ -20,18 +21,20 @@ void GuiConsole::Draw()
 	if (!visible) {
 		return;
 	}
-	
 
-	
+
+
 	App->window->GetSize(window_width, window_height);
+
 	ImGui::SetNextWindowPos(ImVec2(300, 600), ImGuiCond_Once);
+
 	ImGui::SetNextWindowSize(ImVec2((float)window_width / 2, (float)window_height/ 4.5), ImGuiCond_Once);
 
-	if (ImGui::Begin("Console", &visible))
+	if (ImGui::Begin("Console", &visible, ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse))
 	{
 
 		if (ImGui::SmallButton("Clear")) { ClearLog(); } ImGui::SameLine();
-		if (ImGui::SmallButton("Add Dummy Text")) { AddLog("some text"); AddLog("display very important message here!"); } ImGui::SameLine();
+		//if (ImGui::SmallButton("Add Dummy Text")) { AddLog("some text"); AddLog("display very important message here!"); } ImGui::SameLine();
 		if (ImGui::Checkbox("Auto-scroll", &Scroll)); ImGui::Separator();
 
 		

@@ -6,6 +6,7 @@
 #include "ModuleRenderer3D.h"
 #include "GameObject.h"
 #include "math.h"
+#include "GuiConsole.h"
 
 
 //Square data using different methods for debbuging purposes
@@ -106,7 +107,7 @@ ModuleScene::~ModuleScene()
 // Load assets
 bool ModuleScene::Start()
 {
-	LOG("Loading Intro assets");
+	LOG_CONSOLE("Loading Intro assets");
 	bool ret = true;
 
 	selected = &objectsList.front();

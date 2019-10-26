@@ -58,6 +58,8 @@ bool ModuleGui::Init(json file)
 // Called before the first frame
 bool ModuleGui::Start()
 {
+	LOG_CONSOLE("Creating ImGui context");
+
 	for (class std::list<GuiElement*>::iterator item = gui_elements.begin(); item != gui_elements.end(); ++item)
 	{
 		(*item)->Start();

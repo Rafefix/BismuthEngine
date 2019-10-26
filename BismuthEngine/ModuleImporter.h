@@ -23,6 +23,7 @@ public:
 	GameObject* CreateGameObject();
 public:
 	uint texture;
+	uint def_texture;
 	bool loadedAll = false;
 	
 };

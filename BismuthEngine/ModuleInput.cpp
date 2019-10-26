@@ -4,6 +4,8 @@
 #include "ModuleScene.h"
 #include "GameObject.h"
 #include "ComponentMaterial.h"
+#include "GuiConsole.h"
+
 
 #define MAX_KEYS 300
 
