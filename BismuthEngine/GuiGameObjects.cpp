@@ -28,8 +28,7 @@ void GameObjects::Draw()
 				App->scene->selected = &App->scene->objectsList[i];
 			}
 		}
-
-
+	
 		ImGui::End();
 	}
 }
