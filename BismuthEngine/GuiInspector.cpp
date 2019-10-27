@@ -29,7 +29,7 @@ void GuiInspector::Draw() {
 
 	if (App->scene->selected != nullptr) {
 
-		ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name.c_str());
+		//ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name.c_str());
 
 		static char new_name[50] = "";
 		strcpy_s(new_name, 50, App->scene->selected->name.c_str());

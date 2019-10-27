@@ -131,7 +131,7 @@ update_status ModuleInput::PreUpdate(float dt)
 					}
 					
 					if(strstr(e.drop.file, ".fbx") != nullptr || strstr(e.drop.file, ".FBX") != nullptr){
-						App->importer->LoadFile(e.drop.file);
+						App->importer->LoadFile(e.drop.file, App->importer->def_texture);
 						App->scene->selected = &App->scene->objectsList.back();
 						App->scene->selected_id = App->scene->objectsList.size() - 1;
 					} 

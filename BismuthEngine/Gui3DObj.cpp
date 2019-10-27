@@ -2,6 +2,8 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRenderer3D.h"
+#include "ModuleImporter.h"
+#include "ModuleScene.h"
 #include "imgui.h"
 #include "glew/include/GL/glew.h"
 #include <stdlib.h>
@@ -61,6 +63,30 @@ void Gui3DOBJ::Draw() {
 
 		}
 		
+		if (ImGui::CollapsingHeader("Complex shapes")) {
+
+			if (ImGui::Button("Chair")) {
+				App->importer->LoadFile("Assets\\Chair.fbx", App->importer->def_texture);
+				App->scene->selected = &App->scene->objectsList.back();
+				App->scene->selected_id = App->scene->objectsList.size() - 1;
+			}
+			if (ImGui::Button("Warrior")) {
+				App->importer->LoadFile("Assets\\warrior.fbx", App->importer->def_texture);
+				App->scene->selected = &App->scene->objectsList.back();
+				App->scene->selected_id = App->scene->objectsList.size() - 1;
+			}
+			if (ImGui::Button("Cat")) {
+				App->importer->LoadFile("Assets\\cat.fbx", App->importer->def_texture);
+				App->scene->selected = &App->scene->objectsList.back();
+				App->scene->selected_id = App->scene->objectsList.size() - 1;
+			}
+			if (ImGui::Button("Dragon")) {
+				App->importer->LoadFile("Assets\\Dragon.fbx", App->importer->def_texture);
+				App->scene->selected = &App->scene->objectsList.back();
+				App->scene->selected_id = App->scene->objectsList.size() - 1;
+			}
+
+		}
 		if (ImGui::CollapsingHeader("Rendering options"))
 		{
 			if (ImGui::Checkbox("Depth Test", &DepthTest))
