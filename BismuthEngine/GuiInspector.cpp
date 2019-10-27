@@ -28,7 +28,17 @@ void GuiInspector::Draw() {
 	ImGui::Begin("Inspector", &visible);
 
 	if (App->scene->selected != nullptr) {
+
 		ImGui::TextColored(ImVec4(0, 128, 128, 255), App->scene->selected->name.c_str());
+
+		static char new_name[50] = "";
+		strcpy_s(new_name, 50, App->scene->selected->name.c_str());
+
+		if (ImGui::InputText("", new_name, 50, ImGuiInputTextFlags_EnterReturnsTrue));
+		{
+			App->scene->selected->name = new_name;
+		}
+
 		App->scene->selected->OnEditor();
 	}
 
