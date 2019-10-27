@@ -39,6 +39,12 @@ void GuiInspector::Draw() {
 			App->scene->selected->name = new_name;
 		}
 
+		/*if (ImGui::Button("Delete Object")) 
+		{
+
+			App->scene->selected.
+		}
+*/
 		App->scene->selected->OnEditor();
 	}
 

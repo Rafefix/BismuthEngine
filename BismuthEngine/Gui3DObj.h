@@ -33,6 +33,7 @@ public:
 	bool	MaterialColor = true;
 	bool	Lighting = true;
 	bool	Texture2D = true;
+	bool	Wireframe = false;
 
 };
 

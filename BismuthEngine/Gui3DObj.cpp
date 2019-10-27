@@ -104,6 +104,10 @@ void Gui3DOBJ::Draw() {
 			if (ImGui::Checkbox("Texture 2D", &Texture2D))
 				App->renderer3D->Texture2DEnable(Texture2D);
 
+			if (ImGui::Checkbox("Wireframe", &Wireframe))
+				App->renderer3D->WireframeEnable(Wireframe);
+
+
 
 		}
 

@@ -26,7 +26,7 @@ public:
 	void CullFaceEnable(bool enable);
 	void LightingEnable(bool enable);
 	void Texture2DEnable(bool enable);
-
+	void WireframeEnable(bool enable);
 
 
 public:

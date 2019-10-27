@@ -20,6 +20,8 @@ public:
 	void Update();
 	void Draw() const;		
 	void CleanUp();
+	//void Delete();
+
 
 	Component* AddComponent(COMPONENT_TYPE type, bool active = true);
 	void OnEditor();

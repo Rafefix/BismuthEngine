@@ -94,3 +94,8 @@ void GameObject::CleanUp() {
 		components[i] = nullptr;
 	}
 }
+
+//void GameObject::Delete()
+//{
+//
+//}
